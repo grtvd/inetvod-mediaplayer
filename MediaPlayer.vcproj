@@ -2,7 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="PS2"
+	Name="MediaPlayer"
+	ProjectGUID="{87861A20-545E-41EB-AF6C-7077C945161C}"
+	Keyword="Win32Proj">
 	<Platforms>
 		<Platform
 			Name="Win32"/>
@@ -21,6 +23,7 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="c:\projects\inetvod\glut;c:\projects\inetvod\FreeType\include;c:\projects\inetvod\FreeType\include\freetype2;C:\projects\inetvod\FTGL\include;core;controls;data;welcome;nowplaying;setup;search;request;rent;prefs"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;USE_GLUT;XUSE_GLUT_FONT;FTGL_LIBRARY_STATIC;ERRORDEBUGON"
+				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="5"
 				BufferSecurityCheck="TRUE"
@@ -29,30 +32,29 @@
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
-				PrecompiledHeaderFile=".\Debug/PS2.pch"
-				AssemblerListingLocation=".\Debug/"
-				ObjectFile=".\Debug/"
-				ProgramDataBaseFileName=".\Debug/"
+				PrecompiledHeaderFile="$(OutDir)/MediaPlayer.pch"
+				AssemblerListingLocation="$(OutDir)/"
+				ObjectFile="$(OutDir)/"
+				ProgramDataBaseFileName="$(OutDir)/"
 				WarningLevel="3"
 				SuppressStartupBanner="TRUE"
+				Detect64BitPortabilityProblems="TRUE"
 				DebugInformationFormat="4"
 				CompileAs="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386"
 				AdditionalDependencies="Ws2_32.lib c:\projects\inetvod\glut\glut32.lib C:\Projects\inetvod\FreeType\lib\libfreetype.lib C:\Projects\inetvod\FTGL\win32_vcpp\build\ftgl_static_MT_d.lib"
-				OutputFile=".\Debug/iNetVOD Media Player.exe"
+				OutputFile="$(OutDir)/iNetVOD Media Player.exe"
 				LinkIncremental="2"
-				SuppressStartupBanner="TRUE"
 				IgnoreDefaultLibraryNames="LIBCMTD"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile=".\Debug/PS2.pdb"
-				SubSystem="2"/>
+				ProgramDatabaseFile="$(OutDir)/iNetVOD Media Player.pdb"
+				SubSystem="2"
+				TargetMachine="1"/>
 			<Tool
-				Name="VCMIDLTool"
-				TypeLibraryName=".\Debug/PS2.tlb"/>
+				Name="VCMIDLTool"/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
@@ -85,32 +87,32 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="WIN32,NDEBUG,_CONSOLE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="TRUE"
 				RuntimeLibrary="4"
 				EnableFunctionLevelLinking="FALSE"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
-				PrecompiledHeaderFile=".\Release/PS2.pch"
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
+				PrecompiledHeaderFile="$(OutDir)/MediaPlayer.pch"
+				AssemblerListingLocation="$(OutDir)/"
+				ObjectFile="$(OutDir)/"
+				ProgramDataBaseFileName="$(OutDir)/"
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"/>
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386"
-				AdditionalDependencies="odbc32.lib odbccp32.lib"
-				OutputFile=".\Release/PS2.exe"
+				OutputFile="$(OutDir)/iNetVOD Media Player.exe"
 				LinkIncremental="1"
-				SuppressStartupBanner="TRUE"
-				ProgramDatabaseFile=".\Release/PS2.pdb"
-				SubSystem="1"/>
+				GenerateDebugInformation="TRUE"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				TargetMachine="1"/>
 			<Tool
-				Name="VCMIDLTool"
-				TypeLibraryName=".\Release/PS2.tlb"/>
+				Name="VCMIDLTool"/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
@@ -403,10 +405,10 @@
 				RelativePath=".\Controls\ShowSearchListControl.h">
 			</File>
 			<File
-				RelativePath="Controls\TextListControl.cpp">
+				RelativePath=".\Controls\TextListControl.cpp">
 			</File>
 			<File
-				RelativePath="Controls\TextListControl.h">
+				RelativePath=".\Controls\TextListControl.h">
 			</File>
 		</Filter>
 		<Filter
