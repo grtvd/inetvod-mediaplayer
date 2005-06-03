@@ -1,0 +1,35 @@
+ShowSearchRqst
+- finished all read/write, need to update iNetVOD code.
+
+BinaryFiler::ensureBuffer
+
+Stream.cpp/h
+DataFiler.cpp/h
+TCPRequestor.cpp/h
+
+
+Working on SearchResultsScreen
+ShowDetail/ShowSearch objects
+Need to add 'Rsqt' to end of file name for requests (ShowSearch.h => ShowSearchRqst.h)
+Working on ShowSearch.h
+Working on SearchScreen
+
+
+Remove all GLUT calls
+	Get working via Mesa calls
+	Deal with fonts
+
+c:\projects\glut\glut32.lib
+c:\Projects\glut
+
+
+PS2 Changes Needed
+	modelLoop() under GLUT
+	Support for controller/remote
+	Support for sound (MessageBeep)
+	Support for GetTickCount
+
+PS2Linux
+	Look for doc on Mesa
+	Look for samples for Mesa
+	Look for non-GLUT samples

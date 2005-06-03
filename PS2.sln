@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PS2", "PS2.vcproj", "{8562EEE3-066E-45BA-9DAC-D82BC487B860}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{8562EEE3-066E-45BA-9DAC-D82BC487B860}.Debug.ActiveCfg = Debug|Win32
+		{8562EEE3-066E-45BA-9DAC-D82BC487B860}.Debug.Build.0 = Debug|Win32
+		{8562EEE3-066E-45BA-9DAC-D82BC487B860}.Release.ActiveCfg = Release|Win32
+		{8562EEE3-066E-45BA-9DAC-D82BC487B860}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
