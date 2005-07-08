@@ -170,7 +170,7 @@ void RentedShowDetailScreen::createControls()
 
 	labelControlPtr = LabelControl::newInstance(fCostID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
-		fRentedShowPtr->getCost()->getDescription());
+		fRentedShowPtr->getCost()->getCostDisplay());
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 	top += 20;

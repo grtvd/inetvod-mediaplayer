@@ -45,14 +45,14 @@ ShowCostType ConvertStringToShowCostType(const char* sct)
 /******************************************************************************/
 /******************************************************************************/
 
-const char* ShowCost::getDescription()
+const char* ShowCost::getCostDisplay()
 {
-	if(!fDescription.hasLen() && !fCostPtr.isNull())
+	if(!fCostDisplay.hasLen() && !fCostPtr.isNull())
 	{
-		fDescription.copyVarg("$%0.2lf", fCostPtr->getAmount());
+		fCostDisplay.copyVarg("$%0.2lf", fCostPtr->getAmount());
 	}
 
-	return fDescription.c_str();
+	return fCostDisplay.c_str();
 }
 
 /******************************************************************************/
@@ -61,7 +61,7 @@ void ShowCost::readFromFiler(DataFilerPtr filerPtr)
 {
 	fShowCostType = ConvertStringToShowCostType(filerPtr->readString().c_str());
 	fCostPtr = filerPtr->readObject(MoneyConstructor());
-	fDescription.copy(filerPtr->readString().c_str());
+	fCostDisplay.copy(filerPtr->readString().c_str());
 }
 
 /******************************************************************************/
@@ -70,7 +70,7 @@ void ShowCost::writeToFiler(DataFilerPtr filerPtr) const
 {
 	filerPtr->writeString(ConvertShowCostTypeToString(fShowCostType).c_str());
 	filerPtr->writeObject(fCostPtr);
-	filerPtr->writeString(fDescription.c_str());
+	filerPtr->writeString(fCostDisplay.c_str());
 }
 
 /******************************************************************************/

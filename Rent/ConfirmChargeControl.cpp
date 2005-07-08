@@ -67,7 +67,7 @@ bool ConfirmChargeControl::loadData(ObjectPtr objectPtr)
 
 	textControlPtr = getControl(fChargeTextID);
 	tempStr.copy("This show has a cost of ");
-	tempStr.concat(showCostPtr->getDescription());
+	tempStr.concat(showCostPtr->getCostDisplay());
 	tempStr.concat(".  This cost will be charged to your account at ");
 	tempStr.concat(rentDataPtr->getProviderName());
 	tempStr.concat(".\r\rDo you wish to proceed?");

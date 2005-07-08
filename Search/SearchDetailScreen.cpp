@@ -165,7 +165,7 @@ void SearchDetailScreen::createControls()
 
 	labelControlPtr = LabelControl::newInstance(fCostID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
-		fShowDetailPtr->getCost()->getDescription());
+		fShowDetailPtr->getCost()->getCostDisplay());
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 	top += 20;

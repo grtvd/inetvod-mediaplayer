@@ -30,7 +30,7 @@ class ShowCost : public Streamable
 protected:
 	ShowCostType fShowCostType;
 	MoneyPtr fCostPtr;
-	CStr32 fDescription;
+	CStr32 fCostDisplay;
 
 protected:
 	ShowCost(DataFilerPtr filerPtr) { readFromFiler(filerPtr); }
@@ -47,12 +47,12 @@ public:
 
 	virtual const char* className() const { return "ShowCost"; }
 
-	virtual void clear() { Object::clear(); fShowCostType = sct_Free; fCostPtr = MoneyPtr(); fDescription.clear(); }
+	virtual void clear() { Object::clear(); fShowCostType = sct_Free; fCostPtr = MoneyPtr(); fCostDisplay.clear(); }
 
 	// Data Get/Set Methods
 	ShowCostType getShowCostType() const { return fShowCostType; }
 	MoneyPtr getCost() const { return fCostPtr; }
-	const char* getDescription();
+	const char* getCostDisplay();
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;
