@@ -121,6 +121,16 @@ long cast2long(unsigned long rhs)
 	return((long)rhs);
 }
 
+/******************************************************************************/
+
+long cast2long(size_t rhs)
+{
+	if(rhs > LONG_MAX)
+		throw ASIException("cast2long", "rhs > LONG_MAX");
+
+	return((long)rhs);
+}
+
 #endif //defined(ERRORDEBUGON)
 /******************************************************************************/
 

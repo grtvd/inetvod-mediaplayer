@@ -258,7 +258,7 @@ public:
 	CStrVar& copy(const CStrVar& str)
 		{ copyData(str.fData,str.fDataLen); return(*this); }
 	CStrVar& copy(const char* str = NULL)
-		{ copyData(str,STRLEN(str)); return(*this); }
+		{ copyData(str,cast2long(STRLEN(str))); return(*this); }
 
 	CStrVar& ncopy(const CStrVar& str,long strnum)
 		{ copyData(str.fData,min(str.fDataLen,strnum)); return(*this); }
@@ -277,7 +277,7 @@ public:
 	CStrVar& concat(const CStrVar& str)
 		{ concatData(str.fData,str.fDataLen); return(*this); }
 	CStrVar& concat(const char* str = NULL)
-		{ concatData(str,STRLEN(str)); return(*this); }
+		{ concatData(str,cast2long(STRLEN(str))); return(*this); }
 	CStrVar& concat(const char ch)
 		{ concatData(&ch,1); return(*this); }
 

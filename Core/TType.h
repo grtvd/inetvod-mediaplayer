@@ -127,6 +127,7 @@ int cast2int(long rhs);
 int cast2int(unsigned long rhs);
 int cast2int(unsigned int rhs);
 long cast2long(unsigned long rhs);
+long cast2long(size_t rhs);
 #else
 inline char cast2char(int rhs) { return((char)rhs); }
 inline byte cast2byte(short rhs) { return((byte)rhs); }
@@ -139,6 +140,7 @@ inline int cast2int(long rhs) { return((int)rhs); }
 inline int cast2int(unsigned long rhs) { return((int)rhs); }
 inline int cast2int(unsigned int rhs) { return((int)rhs); }
 inline long cast2long(unsigned long rhs) { return((long)rhs); }
+inline long cast2long(size_t rhs) { return((long)rhs); }
 #endif
 
 /******************************************************************************/
