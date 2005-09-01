@@ -12,7 +12,7 @@ namespace asi
 
 typedef CStr32ID MemberID;
 typedef CStr32ID ManufacturerID;
-typedef CStr64ID ProviderID;
+typedef CStr32ID ProviderID;
 typedef CStr64ID ShowID;
 typedef CStr64ID RentedShowID;
 typedef CStr32ID CategoryID;
