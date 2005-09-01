@@ -14,6 +14,7 @@ const char TDateTimeUtil::TimeSeparator(':');
 const int TDateTimeUtil::DaysPerMonth[12] = { 31,29,31,30,31,30,31,31,30,31,30,31 };
 const char* TDateTimeUtil::DaysOfWeekShort[7] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
 const char* TDateTimeUtil::DaysOfWeekLong[7] = { "Sunday", "Monday", "Tuesday", "Wedneday", "Thursday", "Friday", "Saturday" };
+const char* TDateTimeUtil::AMPMShortIndicator[2] = { "a", "p" };
 const char* TDateTimeUtil::AMPMIndicator[2] = { "am", "pm" };
 
 /******************************************************************************/
@@ -166,7 +167,9 @@ CStr32 TDateTimeUtil::dateTimeToString(ulong tDate, ulong tTime, TDateTimeFormat
 
 			//formats with no date output
 			case dtf_H_AM:
+			case dtf_Ha:
 			case dtf_H_MM_AM:
+			case dtf_H_MMa:
 				break;
 
 			default:
@@ -199,11 +202,19 @@ CStr32 TDateTimeUtil::dateTimeToString(ulong tDate, ulong tTime, TDateTimeFormat
 				break;
 
 			case dtf_H_AM:
-				strTime.copyVarg("%d%s", hour, AMPMIndicator[isPM]);
+				strTime.copyVarg("%d %s", hour, AMPMIndicator[isPM]);
+				break;
+
+			case dtf_Ha:
+				strTime.copyVarg("%d%s", hour, AMPMShortIndicator[isPM]);
 				break;
 
 			case dtf_H_MM_AM:
 				strTime.copyVarg("%d%c%02d %s", hour, TimeSeparator, minute, AMPMIndicator[isPM]);
+				break;
+
+			case dtf_H_MMa:
+				strTime.copyVarg("%d%c%02d%s", hour, TimeSeparator, minute, AMPMShortIndicator[isPM]);
 				break;
 
 				//formats with no time output
@@ -232,7 +243,9 @@ CStr32 TDateTimeUtil::dateTimeToString(ulong tDate, ulong tTime, TDateTimeFormat
 
 		//time only formats
 		case dtf_H_AM:
+		case dtf_Ha:
 		case dtf_H_MM_AM:
+		case dtf_H_MMa:
 			return strTime;
 
 		//date/time formats

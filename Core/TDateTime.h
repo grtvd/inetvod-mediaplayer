@@ -31,7 +31,9 @@ enum TDateTimeFormat
 	dtf_M_D_YYYY_H_MM_SS_AM,	// 2/3/2004 1:05:07 PM
 	dtf_M_D_H_MM_AM,			// 2/3 1:05 PM
 	dtf_H_AM,					// 1 PM
+	dtf_Ha,						// 1p
 	dtf_H_MM_AM,				// 1:05 PM
+	dtf_H_MMa,					// 1:05p
 };
 
 /******************************************************************************/
@@ -70,6 +72,7 @@ public:
 	static const int DaysPerMonth[12];
 	static const char* DaysOfWeekShort[7];
 	static const char* DaysOfWeekLong[7];
+	static const char* AMPMShortIndicator[2];
 	static const char* AMPMIndicator[2];
 
 	// static routines
