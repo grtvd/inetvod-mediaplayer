@@ -58,7 +58,7 @@ void HaveProviderControl::createControls()
 	editControlPtr = EditControl::newInstance(fUserIDID, fScreenID,
 		RectWH(screenCenter + 5, top, 198, 0));
 	editControlPtr->setType(ect_UpperAlphaNumeric);
-	editControlPtr->setMaxLength(9);
+	editControlPtr->setMaxLength(64);
 	editControlPtr->setFocus(true);
 	newControl(editControlPtr);
 
@@ -69,8 +69,8 @@ void HaveProviderControl::createControls()
 	newControl(labelControlPtr);
 	editControlPtr = EditControl::newInstance(fPasswordID, fScreenID,
 		RectWH(screenCenter + 5, top, 132, 0));
-	editControlPtr->setType(ect_Numeric);
-	editControlPtr->setMaxLength(6);
+	editControlPtr->setType(ect_AlphaNumeric);
+	editControlPtr->setMaxLength(16);
 	newControl(editControlPtr);
 
 	controlPtr = ButtonControl::newInstance(ContinueID, fScreenID,
