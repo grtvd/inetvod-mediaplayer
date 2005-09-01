@@ -69,7 +69,7 @@ void RentedShowListControl::drawItem(int item) const
 	}
 	else if(timeSpan.getTotalDays() < 0.0)
 		expires.copy("Expired");
-	else if(timeSpan.getTotalDays() == 0.0)
+	else if(timeSpan.getTotalDays() <= 1.0)
 	{
 		expires.copy(rentedShowSearchPtr->getAvailableUntil().c_str(dtf_H_MM_AM));
 	}
