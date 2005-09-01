@@ -13,7 +13,7 @@ using namespace asi;
 /******************************************************************************/
 /******************************************************************************/
 
-const ScreenID RentedShowDetailScreen::ID("Search004");
+const ScreenID RentedShowDetailScreen::ID("Show003");
 
 const ControlID RentedShowDetailScreen::fNameID("name");
 const ControlID RentedShowDetailScreen::fEpisodeID("episode");
@@ -105,7 +105,7 @@ void RentedShowDetailScreen::createControls()
 
 	tempStr.clear();
 	if(!fRentedShowPtr->getReleasedOn().isUndefined())
-		tempStr.copy(fRentedShowPtr->getReleasedOn().c_str(dtf_MM_DD_YYYY));
+		tempStr.copy(fRentedShowPtr->getReleasedOn().c_str(dtf_M_D_YYYY));
 	else if(!fRentedShowPtr->getReleasedYear().isUndefined())
 		tempStr.copy(fRentedShowPtr->getReleasedYear().c_str());
 	labelControlPtr = LabelControl::newInstance(fReleasedID, fScreenID,

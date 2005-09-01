@@ -24,6 +24,7 @@ enum TDateTimeFormat
 	//TODO: dtf_ISO8601_Date,
 	//TODO: dtf_ISO8601_DateTime,
 	dtf_MM_DD_YY,				// 02/03/04
+	dtf_M_D_YYYY,				// 2/3/2004
 	dtf_MM_DD_YYYY,				// 02/03/2004
 	dtf_M_D,					// 2/3
 	dtf_M_D_YYYY_H_MM_AM,		// 2/3/2004 1:05 PM

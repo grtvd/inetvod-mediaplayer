@@ -101,7 +101,7 @@ void SearchDetailScreen::createControls()
 
 	tempStr.clear();
 	if(!fShowDetailPtr->getReleasedOn().isUndefined())
-		tempStr.copy(fShowDetailPtr->getReleasedOn().c_str(dtf_MM_DD_YYYY));
+		tempStr.copy(fShowDetailPtr->getReleasedOn().c_str(dtf_M_D_YYYY));
 	else if(!fShowDetailPtr->getReleasedYear().isUndefined())
 		tempStr.copy(fShowDetailPtr->getReleasedYear().c_str());
 	labelControlPtr = LabelControl::newInstance(fReleasedID, fScreenID,
