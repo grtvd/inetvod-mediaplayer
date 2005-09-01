@@ -33,8 +33,7 @@ protected:
 	RatingID fRatingID;
 	bool fIsAdult;
 
-	ShowCostPtr fCostPtr;
-	TInt16 fRentalHours;
+	ShowCostPtr fShowCostPtr;
 	TDateTime fRentedOn;
 	TDateTime fAvailableUntil;
 
@@ -72,8 +71,7 @@ public:
 		{ categoryIDVector.copy(fCategoryIDVector); }
 	const RatingID& getRatingID() const { return fRatingID; }
 	bool getIsAdult() const { return fIsAdult; }
-	ShowCostPtr getCost() const { return fCostPtr; }
-	TInt16 getRentalHours() const { return fRentalHours; }
+	ShowCostPtr getShowCost() const { return fShowCostPtr; }
 	TDateTime getRentedOn() const { return fRentedOn; }
 	TDateTime getAvailableUntil() const { return fAvailableUntil; }
 

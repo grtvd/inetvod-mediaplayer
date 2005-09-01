@@ -60,7 +60,7 @@ void RentScreen::createControls()
 	SessionPtr sessionPtr = MainApp::getThe()->getSession();
 	ShowDetailPtr showDetailPtr = fRentDataPtr->getShowDetail();
 
-	if((showDetailPtr->getCost()->getShowCostType() == sct_Free) ||
+	if((showDetailPtr->getShowCost()->getShowCostType() == sct_Free) ||
 		sessionPtr->isMemberOfProvider(fRentDataPtr->getProviderID()))
 	{
 		RentStep nextStep = checkShowAvail();
@@ -129,7 +129,7 @@ bool RentScreen::key(int key)
 
 	if(key == ek_Back)
 	{
-		if(ss_AskHaveProviderStep)
+		if(fCurStep == ss_AskHaveProviderStep)
 		{
 			close();
 			return true;
@@ -204,6 +204,7 @@ void RentScreen::onButton(const ControlID& controlID)
 				else
 					openStep(nextStep);
 			}
+
 			return;
 		}
 	}
@@ -291,7 +292,6 @@ bool RentScreen::setProvider()
 {
 	SessionPtr sessionPtr = MainApp::getThe()->getSession();
 	StatusCode statusCode;
-	CStr256 tempStr;
 
 	statusCode = sessionPtr->setProvider(fRentDataPtr->getShowDetail()->getProviderID(),
 		fRentDataPtr->getUserID(), fRentDataPtr->getPassword());

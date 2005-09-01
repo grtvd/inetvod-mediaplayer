@@ -26,7 +26,7 @@ void ShowProvider::readFromFiler(DataFilerPtr filerPtr)
 {
 	fProviderID = ProviderID(filerPtr->readString().c_str());
 
-	fCostPtr = filerPtr->readObject(ShowCostConstructor());
+	fShowCostPtr = filerPtr->readObject(ShowCostConstructor());
 }
 
 /******************************************************************************/

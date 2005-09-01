@@ -31,7 +31,6 @@ void CheckShowAvailRqst::writeToFiler(DataFilerPtr filerPtr) const
 void CheckShowAvailResp::readFromFiler(DataFilerPtr filerPtr)
 {
 	fShowCostPtr = filerPtr->readObject(ShowCostConstructor());
-	fRentalHours = filerPtr->readShort();
 }
 
 /******************************************************************************/

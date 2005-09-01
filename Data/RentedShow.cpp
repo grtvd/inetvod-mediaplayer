@@ -32,8 +32,7 @@ void RentedShow::readFromFiler(DataFilerPtr filerPtr)
 	fRatingID = RatingID(filerPtr->readString().c_str());
 	fIsAdult = filerPtr->readBoolean();
 
-	fCostPtr = filerPtr->readObject(ShowCostConstructor());
-	fRentalHours = filerPtr->readShort();
+	fShowCostPtr = filerPtr->readObject(ShowCostConstructor());
 	fRentedOn = filerPtr->readDateTime();
 	fAvailableUntil = filerPtr->readDateTime();
 }

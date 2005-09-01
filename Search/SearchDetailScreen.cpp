@@ -165,7 +165,7 @@ void SearchDetailScreen::createControls()
 
 	labelControlPtr = LabelControl::newInstance(fCostID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
-		fShowDetailPtr->getCost()->getCostDisplay());
+		fShowDetailPtr->getShowCost()->getCostDisplay());
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 	top += 20;
@@ -176,7 +176,7 @@ void SearchDetailScreen::createControls()
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 
-	tempStr.copyVarg("%s hrs.", fShowDetailPtr->getRentalHours().c_str());
+	tempStr.copyVarg("%s hrs.", fShowDetailPtr->getShowCost()->getRentalHours().c_str());
 	labelControlPtr = LabelControl::newInstance(fRentalHoursID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
 		tempStr.c_str());

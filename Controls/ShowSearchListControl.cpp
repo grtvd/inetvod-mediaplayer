@@ -82,7 +82,7 @@ void ShowSearchListControl::drawItem(int item) const
 		showProviderPtr = showProviderVector[0];
 
 		providerName.copy(MainApp::getThe()->getSession()->getProviderName(showProviderPtr->getProviderID()));
-		cost.copy(showProviderPtr->getCost()->getCostDisplay());
+		cost.copy(showProviderPtr->getShowCost()->getCostDisplay());
 	}
 	else
 		providerName.copy("(multiple)");

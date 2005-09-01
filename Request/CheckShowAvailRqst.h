@@ -50,7 +50,6 @@ class CheckShowAvailResp : public Streamable
 {
 protected:
 	ShowCostPtr fShowCostPtr;
-	TInt16 fRentalHours;
 
 protected:
 	CheckShowAvailResp(DataFilerPtr filerPtr) { readFromFiler(filerPtr); }
@@ -63,7 +62,6 @@ public:
 	virtual const char* className() const { return "CheckShowAvailResp"; }
 
 	ShowCostPtr getShowCost() const { return fShowCostPtr; }
-	TInt16 getRentalHours() const { return fRentalHours; }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;

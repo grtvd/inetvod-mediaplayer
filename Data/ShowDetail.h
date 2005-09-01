@@ -30,8 +30,7 @@ protected:
 	CategoryIDVector fCategoryIDVector;
 	RatingID fRatingID;
 	bool fIsAdult;
-	ShowCostPtr fCostPtr;
-	TInt16 fRentalHours;
+	ShowCostPtr fShowCostPtr;
 
 protected:
 	ShowDetail(DataFilerPtr filerPtr) { readFromFiler(filerPtr); }
@@ -64,8 +63,7 @@ public:
 		{ categoryIDVector.copy(fCategoryIDVector); }
 	const RatingID& getRatingID() const { return fRatingID; }
 	bool getIsAdult() const { return fIsAdult; }
-	ShowCostPtr getCost() const { return fCostPtr; }
-	TInt16 getRentalHours() const { return fRentalHours; }
+	ShowCostPtr getShowCost() const { return fShowCostPtr; }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;

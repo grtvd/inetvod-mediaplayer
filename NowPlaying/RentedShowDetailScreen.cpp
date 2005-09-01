@@ -170,7 +170,7 @@ void RentedShowDetailScreen::createControls()
 
 	labelControlPtr = LabelControl::newInstance(fCostID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
-		fRentedShowPtr->getCost()->getCostDisplay());
+		fRentedShowPtr->getShowCost()->getCostDisplay());
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 	top += 20;
@@ -181,7 +181,7 @@ void RentedShowDetailScreen::createControls()
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 
-	tempStr.copyVarg("%s hrs.", fRentedShowPtr->getRentalHours().c_str());
+	tempStr.copyVarg("%s hrs.", fRentedShowPtr->getShowCost()->getRentalHours().c_str());
 	labelControlPtr = LabelControl::newInstance(fRentalHoursID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
 		tempStr.c_str());

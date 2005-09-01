@@ -52,7 +52,7 @@ void ShowProviderListControl::drawItem(int item) const
 		MainApp::getThe()->getSession()->getProviderName(showProviderPtr->getProviderID()),
 		fontPtr);
 	DrawTextAligned(RectWH(fRect.getWidth() - 60, 0, 50, itemHeight), ha_Left, va_Middle,
-		showProviderPtr->getCost()->getCostDisplay(), fontPtr);
+		showProviderPtr->getShowCost()->getCostDisplay(), fontPtr);
 }
 
 /******************************************************************************/
