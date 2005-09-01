@@ -363,6 +363,8 @@ StatusCode Session::signon()
 	SignonRqstPtr signonRqstPtr;
 	SignonRespPtr signonRespPtr;
 	
+	//TODO: encrypt UserID and Password
+
 	signonRqstPtr = SignonRqst::newInstance();
 	signonRqstPtr->setUserID(fUserID.c_str());
 	signonRqstPtr->setPassword(fUserPassword.c_str());
@@ -487,6 +489,8 @@ StatusCode Session::enableAdultAccess(const char* password)
 	EnableAdultAccessRqstPtr enableAdultAccessRqstPtr;
 	EnableAdultAccessRespPtr enableAdultAccessRespPtr;
 	
+	//TODO: encrypt Password
+
 	enableAdultAccessRqstPtr = EnableAdultAccessRqst::newInstance();
 	enableAdultAccessRqstPtr->setPassword(password);
 
@@ -655,6 +659,8 @@ StatusCode Session::setProvider(const ProviderID& providerID, const char* userID
 
 	SetProviderRqstPtr setProviderRqstPtr;
 	
+	//TODO: encrypt UserID and Password
+
 	setProviderRqstPtr = SetProviderRqst::newInstance();
 	setProviderRqstPtr->setProviderID(providerID);
 	setProviderRqstPtr->setUserID(userID);
