@@ -24,7 +24,7 @@ namespace asi
 
 enum SetupStep
 {
-	ss_AskSignupStep = 0,
+	ss_AskSignedUpStep = 0,
 	ss_NeedLogonIDStep,
 	ss_HaveLogonIDStep,
 };
@@ -42,7 +42,7 @@ SetupScreen::SetupScreen() : Screen(ID)
 {
 	fTitle.copy("Setup");
 	fSetupDataPtr = SetupData::newInstance();
-	fCurStep = ss_AskSignupStep;
+	fCurStep = ss_AskSignedUpStep;
 	fSignonNeeded = false;
 }
 
@@ -62,7 +62,7 @@ bool SetupScreen::newInstance()
 
 void SetupScreen::createControls()
 {
-	openStep(ss_AskSignupStep);
+	openStep(ss_AskSignedUpStep);
 }
 
 /******************************************************************************/
@@ -73,7 +73,7 @@ void SetupScreen::openStep(int step)
 
 	switch(step)
 	{
-		case ss_AskSignupStep:
+		case ss_AskSignedUpStep:
 		default:
 			containerControlPtr = AskSignedUpControl::newInstance(fStepControlID, getScreenID(),
 				RectWH(0, 0, fContentWidth, fContentHeight));
@@ -132,14 +132,14 @@ bool SetupScreen::key(int key)
 		if(fCurStep == ss_NeedLogonIDStep)
 		{
 			if(closeStep(false))
-				openStep(ss_AskSignupStep);
+				openStep(ss_AskSignedUpStep);
 
 			return true;
 		}
 		else if(fCurStep == ss_HaveLogonIDStep)
 		{
 			if(closeStep(false))
-				openStep(ss_AskSignupStep);
+				openStep(ss_AskSignedUpStep);
 
 			return true;
 		}
@@ -152,15 +152,15 @@ bool SetupScreen::key(int key)
 
 void SetupScreen::onButton(const ControlID& controlID)
 {
-	if(fCurStep == ss_AskSignupStep)
+	if(fCurStep == ss_AskSignedUpStep)
 	{
-		if(controlID == AskSignedUpControl::NotRegisterdID)
+		if(controlID == AskSignedUpControl::NotRegisteredID)
 		{
 			if(closeStep())
 				openStep(ss_NeedLogonIDStep);
 			return;
 		}
-		else if(controlID == AskSignedUpControl::AlreadyRegisterdID)
+		else if(controlID == AskSignedUpControl::AlreadyRegisteredID)
 		{
 			if(canPingServer())
 				if(closeStep())

@@ -16,8 +16,8 @@ namespace asi
 
 const ControlID AskSignedUpControl::fWelecomeTextID("welecometext");
 const ControlID AskSignedUpControl::fRegisteredTextID("registeredtext");
-const ControlID AskSignedUpControl::AlreadyRegisterdID("alreadyregisterd");
-const ControlID AskSignedUpControl::NotRegisterdID("notregisterd");
+const ControlID AskSignedUpControl::AlreadyRegisteredID("alreadyregistered");
+const ControlID AskSignedUpControl::NotRegisteredID("notregistered");
 
 /******************************************************************************/
 
@@ -52,13 +52,13 @@ void AskSignedUpControl::createControls()
 	newControl(controlPtr);
 
 	top += controlPtr->getRect().getHeight() + 28;
-	buttonControlPtr = ButtonControl::newInstance(AlreadyRegisterdID, fScreenID, RectWH(screenCenter - 150, top, 300, 38), "Yes, I am already registered");
+	buttonControlPtr = ButtonControl::newInstance(AlreadyRegisteredID, fScreenID, RectWH(screenCenter - 150, top, 300, 38), "Yes, I am already registered");
 	buttonControlPtr->setHorzAlign(ha_Left);
 	buttonControlPtr->setFocus(true);
 	newControl(buttonControlPtr);
 
 	top += buttonControlPtr->getRect().getHeight() + 6;
-	buttonControlPtr = ButtonControl::newInstance(NotRegisterdID, fScreenID, RectWH(screenCenter - 150, top, 300, 38), "No, I am not yet registered");
+	buttonControlPtr = ButtonControl::newInstance(NotRegisteredID, fScreenID, RectWH(screenCenter - 150, top, 300, 38), "No, I am not yet registered");
 	buttonControlPtr->setHorzAlign(ha_Left);
 	newControl(buttonControlPtr);
 }

@@ -13,8 +13,8 @@ namespace asi
 class AskSignedUpControl : public ContainerControl
 {
 public:
-	static const ControlID AlreadyRegisterdID;
-	static const ControlID NotRegisterdID;
+	static const ControlID AlreadyRegisteredID;
+	static const ControlID NotRegisteredID;
 protected:
 	static const ControlID fWelecomeTextID;
 	static const ControlID fRegisteredTextID;
