@@ -163,9 +163,12 @@ void SearchDetailScreen::createControls()
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 
+	ShowCostVector showCostVector;
+	fShowDetailPtr->getShowCostVector(showCostVector);
+	ShowCostPtr showCostPtr = showCostVector[0];	//TODO: Need to deal with multiple
+
 	labelControlPtr = LabelControl::newInstance(fCostID, fScreenID,
-		RectWH(tempAlign, top, fieldWidth, 20),
-		fShowDetailPtr->getShowCost()->getCostDisplay());
+		RectWH(tempAlign, top, fieldWidth, 20), showCostPtr->getCostDisplay());
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 	top += 20;
@@ -176,7 +179,7 @@ void SearchDetailScreen::createControls()
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 
-	tempStr.copyVarg("%s hrs.", fShowDetailPtr->getShowCost()->getRentalHours().c_str());
+	tempStr.copyVarg("%s hrs.", showCostPtr->getRentalHours().c_str());
 	labelControlPtr = LabelControl::newInstance(fRentalHoursID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
 		tempStr.c_str());

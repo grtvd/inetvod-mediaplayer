@@ -31,7 +31,7 @@ void ShowDetail::readFromFiler(DataFilerPtr filerPtr)
 	fRatingID = RatingID(filerPtr->readString().c_str());
 	fIsAdult = filerPtr->readBoolean();
 
-	fShowCostPtr = filerPtr->readObject(ShowCostConstructor());
+	fShowCostVector.readFromFiler(filerPtr);
 }
 
 /******************************************************************************/

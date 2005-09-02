@@ -49,7 +49,7 @@ public:
 class CheckShowAvailResp : public Streamable
 {
 protected:
-	ShowCostPtr fShowCostPtr;
+	ShowCostVector fShowCostVector;
 
 protected:
 	CheckShowAvailResp(DataFilerPtr filerPtr) { readFromFiler(filerPtr); }
@@ -61,7 +61,8 @@ public:
 
 	virtual const char* className() const { return "CheckShowAvailResp"; }
 
-	ShowCostPtr getShowCost() const { return fShowCostPtr; }
+	void getShowCostVector(ShowCostVector& showCostVector) const
+		{ showCostVector.copy(fShowCostVector); }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;

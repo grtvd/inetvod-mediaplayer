@@ -76,6 +76,31 @@ void ShowCost::writeToFiler(DataFilerPtr filerPtr) const
 }
 
 /******************************************************************************/
+/******************************************************************************/
+
+void ShowCostVector::readFromFiler(DataFilerPtr filerPtr)
+{
+	long numItems;
+
+	clear();
+	numItems = filerPtr->readLong();
+	for(int i = 0; i < numItems; ++i)
+		push_back(ShowCost::newInstance(filerPtr));
+}
+
+/******************************************************************************/
+
+void ShowCostVector::writeToFiler(DataFilerPtr filerPtr) const
+{
+	throw ASIException("ShowCostVector::writeToFiler", "not implemented");
+	//ShowCostVector::const_iterator iter;
+
+	//filerPtr->writeLong(size());
+	//for(iter = begin(); iter != end(); ++iter)
+	//	(*iter)->writeToFiler(filerPtr);
+}
+
+/******************************************************************************/
 
 };	//namespace asi
 

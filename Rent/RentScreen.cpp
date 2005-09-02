@@ -59,8 +59,13 @@ void RentScreen::createControls()
 {
 	SessionPtr sessionPtr = MainApp::getThe()->getSession();
 	ShowDetailPtr showDetailPtr = fRentDataPtr->getShowDetail();
+	ShowCostVector showCostVector;
+	ShowCostPtr showCostPtr;
 
-	if((showDetailPtr->getShowCost()->getShowCostType() == sct_Free) ||
+	showDetailPtr->getShowCostVector(showCostVector);
+	showCostPtr = showCostVector[0];	//TODO: is this OK to check "first" showCost as Free?
+
+	if((showCostPtr->getShowCostType() == sct_Free) ||
 		sessionPtr->isMemberOfProvider(fRentDataPtr->getProviderID()))
 	{
 		RentStep nextStep = checkShowAvail();
@@ -264,7 +269,12 @@ RentStep RentScreen::checkShowAvail()
 	if(statusCode != sc_Success)
 		return ss_Undefined;
 
-	ShowCostPtr showCostPtr = checkShowAvailRespPtr->getShowCost();
+	ShowCostVector showCostVector;
+	ShowCostPtr showCostPtr;
+
+	checkShowAvailRespPtr->getShowCostVector(showCostVector);
+	showCostPtr = showCostVector[0];	//TODO: If multiple, need to confirm rental period/cost with user
+
 	fRentDataPtr->setShowCost(showCostPtr);
 	if(showCostPtr->getShowCostType() == sct_PayPerView)
 		return ss_ConfirmChargeStep;

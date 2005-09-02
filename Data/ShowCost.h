@@ -83,6 +83,18 @@ public:
 
 /******************************************************************************/
 
+class ShowCostVector : public std::vector<ShowCostPtr>
+{
+public:
+	void copy(const ShowCostVector& showCostVector)
+		{ clear(); insert(end(), showCostVector.begin(), showCostVector.end()); }
+
+	void readFromFiler(DataFilerPtr filerPtr);
+	void writeToFiler(DataFilerPtr filerPtr) const;
+};
+
+/******************************************************************************/
+
 }; //namespace asi
 
 #endif	//ShowCostH
