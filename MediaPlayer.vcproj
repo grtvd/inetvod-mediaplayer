@@ -153,13 +153,13 @@
 			<File
 				RelativePath=".\Main\StdAfx.cpp">
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						UsePrecompiledHeader="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						UsePrecompiledHeader="1"/>
@@ -431,6 +431,12 @@
 			</File>
 			<File
 				RelativePath=".\Data\IncludeAdult.h">
+			</File>
+			<File
+				RelativePath=".\Data\License.cpp">
+			</File>
+			<File
+				RelativePath=".\Data\License.h">
 			</File>
 			<File
 				RelativePath=".\Data\MemberPrefs.cpp">

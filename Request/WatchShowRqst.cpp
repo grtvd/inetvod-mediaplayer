@@ -29,8 +29,7 @@ void WatchShowRqst::writeToFiler(DataFilerPtr filerPtr) const
 
 void WatchShowResp::readFromFiler(DataFilerPtr filerPtr)
 {
-	fShowURL.copy(filerPtr->readString().c_str());
-	fShowAccessKey.copy(filerPtr->readString().c_str());
+	fLicensePtr = filerPtr->readObject(LicenseConstructor());
 }
 
 /******************************************************************************/

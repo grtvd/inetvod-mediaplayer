@@ -5,6 +5,8 @@
 #ifndef RentShowRqstH
 #define RentShowRqstH
 
+#include "License.h"
+
 namespace asi
 {
 
@@ -52,7 +54,7 @@ class RentShowResp : public Streamable
 {
 protected:
 	RentedShowID fRentedShowID;
-	CStrVar fShowURL;
+	LicensePtr fLicensePtr;
 
 protected:
 	RentShowResp(DataFilerPtr filerPtr) { readFromFiler(filerPtr); }
@@ -65,7 +67,7 @@ public:
 	virtual const char* className() const { return "RentShowResp"; }
 
 	const RentedShowID& getRentedShowID() const { return(fRentedShowID); }
-	const char* getShowURL() const { return fShowURL.c_str(); }
+	LicensePtr getLicensePtr() const { return fLicensePtr; }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;

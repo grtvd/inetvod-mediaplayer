@@ -47,8 +47,7 @@ public:
 class WatchShowResp : public Streamable
 {
 protected:
-	CStrVar fShowURL;
-	CStrVar fShowAccessKey;
+	LicensePtr fLicensePtr;
 
 protected:
 	WatchShowResp(DataFilerPtr filerPtr) { readFromFiler(filerPtr); }
@@ -60,8 +59,7 @@ public:
 
 	virtual const char* className() const { return "WatchShowResp"; }
 
-	const char* getShowURL() const { return fShowURL.c_str(); }
-	const char* getShowAccessKey() const { return fShowAccessKey.c_str(); }
+	LicensePtr getLicensePtr() const { return fLicensePtr; }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;

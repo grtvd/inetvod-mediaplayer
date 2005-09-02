@@ -32,7 +32,7 @@ void RentShowRqst::writeToFiler(DataFilerPtr filerPtr) const
 void RentShowResp::readFromFiler(DataFilerPtr filerPtr)
 {
 	fRentedShowID = RentedShowID(filerPtr->readString().c_str());
-	fShowURL.copy(filerPtr->readString().c_str());
+	fLicensePtr = filerPtr->readObject(LicenseConstructor());
 }
 
 /******************************************************************************/
