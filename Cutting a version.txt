@@ -1,0 +1,52 @@
+* iNetVOD Media Player
+
+- Confirm app.config is correct
+- Increase the version nubmer in app.config (may need to Update webapi:signon request)
+- Final build of "iNetVOD Media Player.exe" in "C:\projects\iNetVOD\mediaplayer\Debug"
+
+- copy C:\projects\iNetVOD\mediaplayer\Debug\iNetVOD Media Player.exe to 
+	C:\projects\iNetVOD\mediaplayer\installer\Files\iNetVOD Media Player.exe
+- copy C:\projects\iNetVOD\mediaplayer\app.config
+	C:\projects\iNetVOD\mediaplayer\installer\Files\app.config
+
+- open iNetVOD Media Player.sln
+- update Version
+-- Open propertes window, select "iNetVOD Media Player" in Solution Explorer
+-- Enter new "Version"
+-- Should prompt to update the ProductCode and PackageCode, select "yes".
+- build
+
+- create zips in C:\projects\iNetVOD\mediaplayer\versions
+
+	- 1st file
+		- named: iNetVOD Media Player.n.n.nnnn.zip
+		- should contain files:
+			iNetVOD Media Player.msi
+			Setup.Exe
+			Setup.Ini
+	- 2nd file
+		- named: iNetVOD Media Player_full.n.n.nnnn.zip
+		- should contain files:
+			iNetVOD Media Player.msi
+			Setup.Exe
+			Setup.Ini
+			InstMsiA.Exe
+			InstMsiW.Exe
+
+
+- commit all changed files, use label: "mediaplayer: Cut version 1.0.100x."
+- Label $\projects\iNetVOD\PS2 VSS: v1.0.100x
+
+
+- Copy ZIP to Server
+
+	- 1st file
+		- from: versions\iNetVOD Media Player.n.n.nnnn.zip
+		- to: X:\Program Files\Apache Software Foundation\Tomcat 5.5\webapps\ROOT\iNetVODMediaPlayer.zip
+
+	- 2nd file
+		- from: versions\iNetVOD Media Player_full.n.n.nnnn.zip
+		- to: X:\Program Files\Apache Software Foundation\Tomcat 5.5\webapps\ROOT\iNetVODMediaPlayer2.zip
+
+
+
