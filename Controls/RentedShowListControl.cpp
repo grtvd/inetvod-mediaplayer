@@ -39,7 +39,7 @@ void RentedShowListControl::drawHeader(bool /*showFocus*/) const
 {
 	FontPtr fontPtr = MainApp::getThe()->getFont(gNormalYellowFontID);
 
-	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 250, fHeaderHeight), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 270, fHeaderHeight), ha_Left, va_Middle,
 		"Show", fontPtr);
 	DrawTextAligned(RectWH(fRect.getWidth() - 255, 0, 140, fHeaderHeight), ha_Left, va_Middle,
 		"Provider", fontPtr);
@@ -82,7 +82,7 @@ void RentedShowListControl::drawItem(int item) const
 	else
 		expires.copy(rentedShowSearchPtr->getAvailableUntil().c_str(dtf_M_D));
 
-	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 250, itemHeight), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 270, itemHeight), ha_Left, va_Middle,
 		rentedShowSearchPtr->getName(), fontPtr);
 	DrawTextAligned(RectWH(fRect.getWidth() - 255, 0, 140, itemHeight), ha_Left, va_Middle,
 		MainApp::getThe()->getSession()->getProviderName(rentedShowSearchPtr->getProviderID()),
