@@ -103,6 +103,8 @@ bool StartScreen::doSignon()
 
 		if(statusCode == sc_Success)
 			return true;
+		if(statusCode != sc_UserIDPasswordMismatch)
+			return false;
 	}
 
 	while(true)
