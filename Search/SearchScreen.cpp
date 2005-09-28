@@ -124,7 +124,7 @@ void SearchScreen::onButton(const ControlID& controlID)
 	ButtonControlPtr buttonControlPtr;
 	EditControlPtr editControlPtr;
 
-	if(controlID == fSearchID)
+	if((controlID == fSearchID) || (controlID == fShowNameID))
 	{
 		ShowSearchVector showSearchVector;
 
