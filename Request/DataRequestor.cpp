@@ -39,10 +39,15 @@ StreamablePtr DataRequestor::parseHeader(INetVODPlayerRespPtr responsePtr)
 	fStatusCode = responsePtr->getStatusCode();
 	fStatusMessage = responsePtr->getStatusMessage();
 
-	//TODO: should we check StatusCode here?
+	if(fStatusCode == sc_InvalidSession)
+		MainApp::getThe()->reset();
 
 	if(responsePtr->getResponseDataPtr().isNull())
-		throw ASIException("DataRequestor::parseHeader", "responsePtr->getResponseDataPtr().isNull()");
+	{
+		if(fStatusCode == sc_Success)
+			fStatusCode = sc_GeneralError;
+		return StreamablePtr();
+	}
 
 	return responsePtr->getResponseDataPtr()->getResponse();
 }
@@ -130,10 +135,12 @@ SystemDataRespPtr DataRequestor::systemDataRequest()
 
 /******************************************************************************/
 
-EnableAdultAccessRespPtr DataRequestor::enableAdultAccessRequest(
+StatusCode DataRequestor::enableAdultAccessRequest(
 	EnableAdultAccessRqstPtr enableAdultAccessRqstPtr)
 {
-	return sendRequest(enableAdultAccessRqstPtr);
+	EnableAdultAccessRespPtr enableAdultAccessRespPtr = sendRequest(enableAdultAccessRqstPtr);
+
+	return fStatusCode;
 }
 
 /******************************************************************************/

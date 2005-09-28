@@ -262,8 +262,8 @@ RentStep RentScreen::checkShowAvail()
 	CheckShowAvailRespPtr checkShowAvailRespPtr;
 	StatusCode statusCode;
 
-	checkShowAvailRespPtr = sessionPtr->checkShowAvail(fRentDataPtr->getShowID(), fRentDataPtr->getProviderID(),
-		statusCode);
+	checkShowAvailRespPtr = sessionPtr->checkShowAvail(fRentDataPtr->getShowID(),
+		fRentDataPtr->getProviderID(), statusCode);
 	if(statusCode == sc_InvalidProviderUserIDPassword)
 		return ss_HaveProviderStep;
 	if(statusCode != sc_Success)
@@ -290,8 +290,8 @@ void RentScreen::rentShow()
 	SessionPtr sessionPtr = MainApp::getThe()->getSession();
 	RentShowRespPtr rentShowRespPtr;
 
-	rentShowRespPtr = sessionPtr->rentShow(fRentDataPtr->getShowID(), fRentDataPtr->getProviderID(),
-		fRentDataPtr->getShowCost());
+	rentShowRespPtr = sessionPtr->rentShow(fRentDataPtr->getShowID(),
+		fRentDataPtr->getProviderID(), fRentDataPtr->getShowCost());
 	if(!rentShowRespPtr.isNull())
 		fRentedShowID = rentShowRespPtr->getRentedShowID();
 }
@@ -303,7 +303,7 @@ bool RentScreen::setProvider()
 	SessionPtr sessionPtr = MainApp::getThe()->getSession();
 	StatusCode statusCode;
 
-	statusCode = sessionPtr->setProvider(fRentDataPtr->getShowDetail()->getProviderID(),
+	statusCode = sessionPtr->setProvider(fRentDataPtr->getProviderID(),
 		fRentDataPtr->getUserID(), fRentDataPtr->getPassword());
 
 	return (statusCode == sc_Success);
@@ -317,7 +317,7 @@ bool RentScreen::providerEnroll()
 	StatusCode statusCode;
 	CStr256 tempStr;
 
-	statusCode = sessionPtr->providerEnroll(fRentDataPtr->getShowDetail()->getProviderID());
+	statusCode = sessionPtr->providerEnroll(fRentDataPtr->getProviderID());
 
 	if(statusCode == sc_Success)
 	{
@@ -326,9 +326,10 @@ bool RentScreen::providerEnroll()
 		tempStr.concat("'s membership.");
 
 		MessageScreen::newInstance(mp_OK, tempStr.c_str());
+		return true;
 	}
 
-	return true;
+	return false;
 }
 
 /******************************************************************************/

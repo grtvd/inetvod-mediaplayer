@@ -63,7 +63,7 @@ public:
 	SignonRespPtr signonRequest(SignonRqstPtr signonRqstPtr);
 
 	SystemDataRespPtr systemDataRequest();
-	EnableAdultAccessRespPtr enableAdultAccessRequest(EnableAdultAccessRqstPtr enableAdultAccessRqstPtr);
+	StatusCode enableAdultAccessRequest(EnableAdultAccessRqstPtr enableAdultAccessRqstPtr);
 
 	ShowSearchRespPtr showSearchRequest(ShowSearchRqstPtr showSearchRqstPtr);
 	ShowDetailRespPtr showDetailRequest(ShowDetailRqstPtr showDetailRqstPtr);

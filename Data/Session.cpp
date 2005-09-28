@@ -487,7 +487,6 @@ StatusCode Session::enableAdultAccess(const char* password)
 	CStrVar statusMessage;
 
 	EnableAdultAccessRqstPtr enableAdultAccessRqstPtr;
-	EnableAdultAccessRespPtr enableAdultAccessRespPtr;
 	
 	//TODO: encrypt Password
 
@@ -500,8 +499,7 @@ StatusCode Session::enableAdultAccess(const char* password)
 		MainApp::getThe()->processAvail();
 
 		DataRequestorPtr dataRequestorPtr = DataRequestor::newInstance(fSessionData.c_str());
-		enableAdultAccessRespPtr = dataRequestorPtr->enableAdultAccessRequest(enableAdultAccessRqstPtr);
-		statusCode = dataRequestorPtr->getStatusCode();
+		statusCode = dataRequestorPtr->enableAdultAccessRequest(enableAdultAccessRqstPtr);
 
 		waitScreenPtr->close();
 		if(statusCode == sc_Success)
@@ -676,7 +674,11 @@ StatusCode Session::setProvider(const ProviderID& providerID, const char* userID
 
 		waitScreenPtr->close();
 		if(statusCode == sc_Success)
+		{
+			if(fMemberProviderVector.findByID(providerID).isNull())
+				fMemberProviderVector.push_back(MemberProvider::newInstance(providerID));
 			return sc_Success;
+		}
 
 		statusMessage.copy(dataRequestorPtr->getStatusMessage());
 	}
