@@ -235,8 +235,10 @@ void RentedShowDetailScreen::onButton(const ControlID& controlID)
 	if(controlID == fWatchNowID)
 	{
 		WatchShowRespPtr watchShowRespPtr = sessionPtr->watchShow(fRentedShowPtr->getRentedShowID());
-		MessageScreen::newInstance(mp_OK, "This demo player does not yet play audio or video content.");
+		if(watchShowRespPtr.isNull())
+			return;
 
+		MessageScreen::newInstance(mp_OK, "This demo player does not yet play audio or video content.");
 		return;
 	}
 	else if(controlID == fDeleteNowID)
