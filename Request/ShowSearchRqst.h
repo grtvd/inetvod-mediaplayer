@@ -41,6 +41,7 @@ public:
 		{ fCategoryIDVector.copy(categoryIDVector); }
 	void setRatingIDVector(const RatingIDVector& ratingIDVector)
 		{ fRatingIDVector.copy(ratingIDVector); }
+	TInt16 getMaxResults() const { return fMaxResults; }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;
@@ -78,6 +79,7 @@ public:
 
 	void getShowSearchVector(ShowSearchVector& showSearchVector) const
 		{ showSearchVector.copy(fShowSearchVector); }
+	bool getReachedMax() const { return fReachedMax; }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;

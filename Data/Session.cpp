@@ -560,6 +560,14 @@ bool Session::showSearch(const SearchDataPtr& searchDataPtr, ShowSearchVector& s
 		waitScreenPtr->close();
 		if(statusCode == sc_Success)
 		{
+			if(showSearchRespPtr->getReachedMax())
+			{
+				CStr128 message;
+				message.copyVarg("Over %s shows were found.  Please try narrowing your search criteria.",
+					showSearchRqstPtr->getMaxResults().c_str());
+				MessageScreen::newInstance(mp_OK, message.c_str());
+			}
+
 			showSearchRespPtr->getShowSearchVector(showSearchVector);
 			return true;
 		}
