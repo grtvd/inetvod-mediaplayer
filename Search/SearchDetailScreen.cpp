@@ -65,15 +65,15 @@ void SearchDetailScreen::createControls()
 
 	if(tStrHasLen(fShowDetailPtr->getEpisodeName()) || tStrHasLen(fShowDetailPtr->getEpisodeNumber()))
 	{
-		tempStr.copy("Episode: ");
+		tempStr.clear();
 		if(tStrHasLen(fShowDetailPtr->getEpisodeName()))
 		{
-			tempStr.concat(fShowDetailPtr->getEpisodeName());
+			tempStr.copyVarg("\"%s\"", fShowDetailPtr->getEpisodeName());
 			if(tStrHasLen(fShowDetailPtr->getEpisodeNumber()))
 				tempStr.concatVarg(" (%s)", fShowDetailPtr->getEpisodeNumber());
 		}
 		else
-			tempStr.concat(fShowDetailPtr->getEpisodeNumber());
+			tempStr.copy(fShowDetailPtr->getEpisodeNumber());
 
 		labelControlPtr = LabelControl::newInstance(fEpisodeID, fScreenID,
 			RectWH(10, top, fContentWidth - 20, 18), tempStr.c_str());
@@ -99,7 +99,7 @@ void SearchDetailScreen::createControls()
 	labelControlPtr->setHorzAlign(ha_Right);
 	newControl(labelControlPtr);
 
-	tempStr.clear();
+	tempStr.copy("n/a");
 	if(!fShowDetailPtr->getReleasedOn().isUndefined())
 		tempStr.copy(fShowDetailPtr->getReleasedOn().c_str(dtf_M_D_YYYY));
 	else if(!fShowDetailPtr->getReleasedYear().isUndefined())
@@ -116,7 +116,7 @@ void SearchDetailScreen::createControls()
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 
-	tempStr.clear();
+	tempStr.copy("n/a");
 	if(!fShowDetailPtr->getRunningMins().isUndefined())
 		tempStr.copyVarg("%s mins.", fShowDetailPtr->getRunningMins().c_str());
 	labelControlPtr = LabelControl::newInstance(fRunningMinsID, fScreenID,
@@ -179,7 +179,9 @@ void SearchDetailScreen::createControls()
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 
-	tempStr.copyVarg("%s hrs.", showCostPtr->getRentalHours().c_str());
+	tempStr.copy("n/a");
+	if(!showCostPtr->getRentalHours().isUndefined())
+		tempStr.copyVarg("%s hrs.", showCostPtr->getRentalHours().c_str());
 	labelControlPtr = LabelControl::newInstance(fRentalHoursID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
 		tempStr.c_str());
