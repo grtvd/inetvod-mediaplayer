@@ -29,13 +29,13 @@ void ShowSearchListControl::drawHeader(bool /*showFocus*/) const
 {
 	FontPtr fontPtr = MainApp::getThe()->getFont(gNormalYellowFontID);
 
-	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 275, fHeaderHeight), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 295, fHeaderHeight), ha_Left, va_Middle,
 		"Show", fontPtr);
-	DrawTextAligned(RectWH(fRect.getWidth() - 260, 0, 50, fHeaderHeight), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(fRect.getWidth() - 280, 0, 55, fHeaderHeight), ha_Left, va_Middle,
 		"Date", fontPtr);
-	DrawTextAligned(RectWH(fRect.getWidth() - 205, 0, 140, fHeaderHeight), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(fRect.getWidth() - 220, 0, 140, fHeaderHeight), ha_Left, va_Middle,
 		"Provider", fontPtr);
-	DrawTextAligned(RectWH(fRect.getWidth() - 60, 0, 50, fHeaderHeight), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(fRect.getWidth() - 75, 0, 65, fHeaderHeight), ha_Left, va_Middle,
 		"Price", fontPtr);
 }
 
@@ -74,7 +74,11 @@ void ShowSearchListControl::drawItem(int item) const
 	CStr64 providerName;
 	CStr32 cost;
 
-	date.copy(showSearchPtr->getReleasedYear().c_str());
+	date.clear();
+	if(!showSearchPtr->getReleasedOn().isUndefined())
+		date.copy(showSearchPtr->getReleasedOn().c_str(dtf_M_YY));
+	else if(!showSearchPtr->getReleasedYear().isUndefined())
+		date.copy(showSearchPtr->getReleasedYear().c_str());
 
 	showSearchPtr->getShowProviderVector(showProviderVector);
 	if(showProviderVector.size() == 1)
@@ -87,16 +91,16 @@ void ShowSearchListControl::drawItem(int item) const
 	else
 		providerName.copy("(multiple)");
 
-	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 275, itemLine1Height), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 295, itemLine1Height), ha_Left, va_Middle,
 		showSearchPtr->getName(), fontPtr);
 	if(tStrHasLen(showSearchPtr->getEpisodeName()))
 		DrawTextAligned(RectWH(10, itemLine1Height - 5, fRect.getWidth() - 20, fItemLine2Height), ha_Left, va_Middle,
 			showSearchPtr->getEpisodeName(), smallFontPtr);
-	DrawTextAligned(RectWH(fRect.getWidth() - 260, 0, 50, itemLine1Height), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(fRect.getWidth() - 280, 0, 55, itemLine1Height), ha_Left, va_Middle,
 		date.c_str(), fontPtr);
-	DrawTextAligned(RectWH(fRect.getWidth() - 205, 0, 140, itemLine1Height), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(fRect.getWidth() - 220, 0, 140, itemLine1Height), ha_Left, va_Middle,
 		providerName.c_str(), fontPtr);
-	DrawTextAligned(RectWH(fRect.getWidth() - 60, 0, 50, itemLine1Height), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(fRect.getWidth() - 75, 0, 65, itemLine1Height), ha_Left, va_Middle,
 		cost.c_str(), fontPtr);
 }
 

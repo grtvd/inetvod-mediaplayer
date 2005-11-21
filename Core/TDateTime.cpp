@@ -153,6 +153,9 @@ CStr32 TDateTimeUtil::dateTimeToString(ulong tDate, ulong tTime, TDateTimeFormat
 				sprintf(str,"%02d%c%02d",month,gDateSeparator,day);
 				break;
 				*/
+			case dtf_M_YY:
+				strDate.copyVarg("%d%c%02d", month, DateSeparator, year % 100);
+				break;
 			case dtf_M_D:
 				strDate.copyVarg("%d%c%d", month, DateSeparator, day, DateSeparator);
 				break;

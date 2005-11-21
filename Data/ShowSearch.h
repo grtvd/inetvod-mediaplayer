@@ -21,6 +21,7 @@ protected:
 	ShowID fShowID;
 	CStr128 fName;
 	CStr64 fEpisodeName;
+	TDate fReleasedOn;
 	TInt16 fReleasedYear;
 	ShowProviderVector fShowProviderVector;
 
@@ -44,6 +45,7 @@ public:
 	const ShowID& getShowID() const { return(fShowID); }
 	const char* getName() const { return fName.c_str(); }
 	const char* getEpisodeName() const { return fEpisodeName.c_str(); }
+	TDate getReleasedOn() const { return fReleasedOn; }
 	TInt16 getReleasedYear() const { return fReleasedYear; }
 
 	void getShowProviderVector(ShowProviderVector& showProviderVector) const
