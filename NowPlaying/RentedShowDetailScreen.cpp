@@ -69,15 +69,15 @@ void RentedShowDetailScreen::createControls()
 
 	if(tStrHasLen(fRentedShowPtr->getEpisodeName()) || tStrHasLen(fRentedShowPtr->getEpisodeNumber()))
 	{
-		tempStr.copy("Episode: ");
+		tempStr.clear();
 		if(tStrHasLen(fRentedShowPtr->getEpisodeName()))
 		{
-			tempStr.concat(fRentedShowPtr->getEpisodeName());
+			tempStr.copyVarg("\"%s\"", fRentedShowPtr->getEpisodeName());
 			if(tStrHasLen(fRentedShowPtr->getEpisodeNumber()))
 				tempStr.concatVarg(" (%s)", fRentedShowPtr->getEpisodeNumber());
 		}
 		else
-			tempStr.concat(fRentedShowPtr->getEpisodeNumber());
+			tempStr.copy(fRentedShowPtr->getEpisodeNumber());
 
 		labelControlPtr = LabelControl::newInstance(fEpisodeID, fScreenID,
 			RectWH(10, top, fContentWidth - 20, 18), tempStr.c_str());
@@ -103,7 +103,7 @@ void RentedShowDetailScreen::createControls()
 	labelControlPtr->setHorzAlign(ha_Right);
 	newControl(labelControlPtr);
 
-	tempStr.clear();
+	tempStr.copy("n/a");
 	if(!fRentedShowPtr->getReleasedOn().isUndefined())
 		tempStr.copy(fRentedShowPtr->getReleasedOn().c_str(dtf_M_D_YYYY));
 	else if(!fRentedShowPtr->getReleasedYear().isUndefined())
@@ -120,7 +120,7 @@ void RentedShowDetailScreen::createControls()
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 
-	tempStr.clear();
+	tempStr.copy("n/a");
 	if(!fRentedShowPtr->getRunningMins().isUndefined())
 		tempStr.copyVarg("%s mins.", fRentedShowPtr->getRunningMins().c_str());
 	labelControlPtr = LabelControl::newInstance(fRunningMinsID, fScreenID,
@@ -181,7 +181,9 @@ void RentedShowDetailScreen::createControls()
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 
-	tempStr.copyVarg("%s hrs.", fRentedShowPtr->getShowCost()->getRentalHours().c_str());
+	tempStr.copy("n/a");
+	if(!fRentedShowPtr->getShowCost()->getRentalHours().isUndefined())
+		tempStr.copyVarg("%s hrs.", fRentedShowPtr->getShowCost()->getRentalHours().c_str());
 	labelControlPtr = LabelControl::newInstance(fRentalHoursID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
 		tempStr.c_str());
