@@ -169,7 +169,7 @@
 				RelativePath=".\Main\StdAfx.h">
 			</File>
 			<File
-				RelativePath="~TODO.txt">
+				RelativePath=".\TODO.txt">
 			</File>
 		</Filter>
 		<Filter

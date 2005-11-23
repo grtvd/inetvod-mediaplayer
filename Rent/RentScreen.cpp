@@ -58,14 +58,8 @@ RentedShowID RentScreen::newInstance(const ShowDetailPtr& showDetailPtr)
 void RentScreen::createControls()
 {
 	SessionPtr sessionPtr = MainApp::getThe()->getSession();
-	ShowDetailPtr showDetailPtr = fRentDataPtr->getShowDetail();
-	ShowCostVector showCostVector;
-	ShowCostPtr showCostPtr;
 
-	showDetailPtr->getShowCostVector(showCostVector);
-	showCostPtr = showCostVector[0];	//TODO: is this OK to check "first" showCost as Free?
-
-	if((showCostPtr->getShowCostType() == sct_Free) ||
+	if((fRentDataPtr->getShowCost()->getShowCostType() == sct_Free) ||
 		sessionPtr->isMemberOfProvider(fRentDataPtr->getProviderID()))
 	{
 		RentStep nextStep = checkShowAvail();

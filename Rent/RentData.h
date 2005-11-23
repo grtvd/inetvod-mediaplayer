@@ -15,11 +15,10 @@ class RentData : public Object
 protected:
 	ShowDetailPtr fShowDetailPtr;
 	ProviderPtr fProviderPtr;
+	ShowCostPtr fShowCostPtr;
 
 	CStr64 fUserID;
 	CStr32 fPassword;
-
-	ShowCostPtr fShowCostPtr;
 
 protected:
 	RentData(const ShowDetailPtr& showDetailPtr);
@@ -35,14 +34,14 @@ public:
 	ProviderID getProviderID() const { return fProviderPtr->getProviderID(); }
 	const char* getProviderName() const { return fProviderPtr->getName(); }
 
+	ShowCostPtr getShowCost() const { return fShowCostPtr; }
+	void setShowCost(ShowCostPtr& showCostPtr) { fShowCostPtr = showCostPtr; }
+
 	void setUserID(const char* userID) { fUserID.copy(userID); }
 	const char* getUserID() const { return fUserID.c_str(); }
 
 	void setPassword(const char* password) { fPassword.copy(password); }
 	const char* getPassword() const { return fPassword.c_str(); }
-
-	ShowCostPtr getShowCost() const { return fShowCostPtr; }
-	void setShowCost(ShowCostPtr& showCostPtr) { fShowCostPtr = showCostPtr; }
 
 	friend class RefCountPtr<RentData>;
 };

@@ -45,14 +45,17 @@ int ShowProviderListControl::getItemCount() const
 void ShowProviderListControl::drawItem(int item) const
 {
 	ShowProviderPtr showProviderPtr = fShowProviderVector[item];
+	ShowCostVector showCostVector;
 	int itemHeight = getItemHeight(item);
 	FontPtr fontPtr = MainApp::getThe()->getFont(gNormalWhiteFontID);
 
 	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 80, itemHeight), ha_Left, va_Middle,
 		MainApp::getThe()->getSession()->getProviderName(showProviderPtr->getProviderID()),
 		fontPtr);
+
+	showProviderPtr->getShowCostVector(showCostVector);
 	DrawTextAligned(RectWH(fRect.getWidth() - 60, 0, 50, itemHeight), ha_Left, va_Middle,
-		showProviderPtr->getShowCost()->getCostDisplay(), fontPtr);
+		showCostVector[0]->getCostDisplay(), fontPtr);		//TODO: Showing first ShowCost
 }
 
 /******************************************************************************/

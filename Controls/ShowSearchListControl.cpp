@@ -66,6 +66,7 @@ void ShowSearchListControl::drawItem(int item) const
 	ShowSearchPtr showSearchPtr = fShowSearchVector[item];
 	ShowProviderVector showProviderVector;
 	ShowProviderPtr showProviderPtr;
+	ShowCostVector showCostVector;
 	int itemLine1Height = ListControl::getItemHeight(item);
 	int itemHeight = getItemHeight(item);
 	FontPtr fontPtr = MainApp::getThe()->getFont(gNormalWhiteFontID);
@@ -86,7 +87,9 @@ void ShowSearchListControl::drawItem(int item) const
 		showProviderPtr = showProviderVector[0];
 
 		providerName.copy(MainApp::getThe()->getSession()->getProviderName(showProviderPtr->getProviderID()));
-		cost.copy(showProviderPtr->getShowCost()->getCostDisplay());
+
+		showProviderPtr->getShowCostVector(showCostVector);
+		cost.copy(showCostVector[0]->getCostDisplay());		//TODO: Showing first ShowCost
 	}
 	else
 		providerName.copy("(multiple)");

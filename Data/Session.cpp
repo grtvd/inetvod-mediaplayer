@@ -584,7 +584,7 @@ bool Session::showSearch(const SearchDataPtr& searchDataPtr, ShowSearchVector& s
 
 /******************************************************************************/
 
-ShowDetailPtr Session::showDetail(const ShowID& showID, const ProviderID& providerID)
+ShowDetailPtr Session::showDetail(const ShowID& showID)
 {
 	StatusCode statusCode = sc_GeneralError;
 	CStrVar statusMessage;
@@ -594,7 +594,6 @@ ShowDetailPtr Session::showDetail(const ShowID& showID, const ProviderID& provid
 	
 	showDetailRqstPtr = ShowDetailRqst::newInstance();
 	showDetailRqstPtr->setShowID(showID);
-	showDetailRqstPtr->setProviderID(providerID);
 
 	ScreenPtr waitScreenPtr = WaitScreen::newInstance();
 	try

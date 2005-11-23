@@ -16,7 +16,7 @@ class ShowProvider : public Streamable
 {
 protected:
 	ProviderID fProviderID;
-	ShowCostPtr fShowCostPtr;
+	ShowCostVector fShowCostVector;
 
 protected:
 	ShowProvider() {}
@@ -32,14 +32,12 @@ public:
 
 	virtual const char* className() const { return "ShowProvider"; }
 
-	virtual void clear() { Object::clear(); fProviderID.clear(); fShowCostPtr = ShowCostPtr(); }
+	virtual void clear() { Object::clear(); fProviderID.clear(); fShowCostVector.clear(); }
 
 	// Data Get/Set Methods
-void setProviderID(const ProviderID& providerID) { fProviderID = providerID; }	//TODO:BOB: test data
 	const ProviderID& getProviderID() const { return(fProviderID); }
-
-void setShowCost(const ShowCostPtr& showCostPtr) { fShowCostPtr = showCostPtr; }	//TODO:BOB: test data
-	ShowCostPtr getShowCost() const { return fShowCostPtr; }
+	void getShowCostVector(ShowCostVector& showCostVector) const
+		{ showCostVector.copy(fShowCostVector); }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;

@@ -150,9 +150,13 @@ void SearchDetailScreen::createControls()
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 
+	ShowProviderVector showProviderVector;
+	fShowDetailPtr->getShowProviderVector(showProviderVector);
+	ShowProviderPtr showProviderPtr = showProviderVector[0];	//TODO: Need to deal with multiple
+
 	labelControlPtr = LabelControl::newInstance(fProviderID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
-		sessionPtr->getProviderName(fShowDetailPtr->getProviderID()));
+		sessionPtr->getProviderName(showProviderPtr->getProviderID()));
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 	top += 20;
@@ -164,7 +168,7 @@ void SearchDetailScreen::createControls()
 	newControl(labelControlPtr);
 
 	ShowCostVector showCostVector;
-	fShowDetailPtr->getShowCostVector(showCostVector);
+	showProviderPtr->getShowCostVector(showCostVector);
 	ShowCostPtr showCostPtr = showCostVector[0];	//TODO: Need to deal with multiple
 
 	labelControlPtr = LabelControl::newInstance(fCostID, fScreenID,

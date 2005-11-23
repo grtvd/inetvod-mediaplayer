@@ -135,7 +135,7 @@ public:
 	StatusCode enableAdultAccess(const char* password);
 
 	bool showSearch(const SearchDataPtr& searchDataPtr, ShowSearchVector& showSearchVector);
-	ShowDetailPtr showDetail(const ShowID& showID, const ProviderID& providerID);
+	ShowDetailPtr showDetail(const ShowID& showID);
 
 	StatusCode providerEnroll(const ProviderID& providerID);
 	StatusCode setProvider(const ProviderID& providerID, const char* userID, const char* password);

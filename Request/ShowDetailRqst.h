@@ -16,7 +16,6 @@ class ShowDetailRqst : public Streamable
 {
 protected:
 	ShowID fShowID;
-	ProviderID fProviderID;
 
 protected:
 	ShowDetailRqst() {}
@@ -28,7 +27,6 @@ public:
 	virtual const char* className() const { return "ShowDetailRqst"; }
 
 	void setShowID(const ShowID& showID) { fShowID = showID; }
-	void setProviderID(const ProviderID& providerID) { fProviderID = providerID; }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;

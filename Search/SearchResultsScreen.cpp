@@ -61,28 +61,10 @@ void SearchResultsScreen::onButton(const ControlID& controlID)
 	{
 		ShowSearchListControlPtr showSearchListControlPtr = getControl(fShowListID);
 		ShowSearchPtr showSearchPtr = showSearchListControlPtr->getFocusedItemValue();
-		ShowProviderVector showProviderVector;
-		ProviderID providerID;
 
-		showSearchPtr->getShowProviderVector(showProviderVector);
-		if(showProviderVector.size() == 1)
-		{
-			ShowProviderPtr showProviderPtr = showProviderVector[0];
-			providerID = showProviderPtr->getProviderID();
-		}
-		else
-		{
-			PickProviderScreenPtr pickProviderScreenPtr = PickProviderScreen::newInstance(showSearchPtr);
-			providerID = pickProviderScreenPtr->getProviderID();
-		}
-
-		if(!providerID.isUndefined())
-		{
-			ShowDetailPtr showDetailPtr = sessionPtr->showDetail(showSearchPtr->getShowID(), providerID);
-
-			if(!showDetailPtr.isNull())
-				SearchDetailScreen::newInstance(showDetailPtr);
-		}
+		ShowDetailPtr showDetailPtr = sessionPtr->showDetail(showSearchPtr->getShowID());
+		if(!showDetailPtr.isNull())
+			SearchDetailScreen::newInstance(showDetailPtr);
 
 		return;
 	}

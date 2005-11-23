@@ -22,7 +22,6 @@ void ShowDetailRqst::readFromFiler(DataFilerPtr filerPtr)
 void ShowDetailRqst::writeToFiler(DataFilerPtr filerPtr) const
 {
 	filerPtr->writeString(fShowID.c_str());
-	filerPtr->writeString(fProviderID.c_str());
 }
 
 /******************************************************************************/

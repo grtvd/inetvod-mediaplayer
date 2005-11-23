@@ -16,7 +16,6 @@ namespace asi
 void ShowDetail::readFromFiler(DataFilerPtr filerPtr)
 {
 	fShowID = ShowID(filerPtr->readString().c_str());
-	fProviderID = ProviderID(filerPtr->readString().c_str());
 	fName.copy(filerPtr->readString().c_str());
 	fEpisodeName.copy(filerPtr->readString().c_str());
 	fEpisodeNumber.copy(filerPtr->readString().c_str());
@@ -31,7 +30,7 @@ void ShowDetail::readFromFiler(DataFilerPtr filerPtr)
 	fRatingID = RatingID(filerPtr->readString().c_str());
 	fIsAdult = filerPtr->readBoolean();
 
-	fShowCostVector.readFromFiler(filerPtr);
+	fShowProviderVector.readFromFiler(filerPtr);
 }
 
 /******************************************************************************/

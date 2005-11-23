@@ -16,7 +16,6 @@ class ShowDetail : public Streamable
 {
 protected:
 	ShowID fShowID;
-	ProviderID fProviderID;
 	CStr128 fName;
 	CStr64 fEpisodeName;
 	CStr32 fEpisodeNumber;
@@ -30,7 +29,7 @@ protected:
 	CategoryIDVector fCategoryIDVector;
 	RatingID fRatingID;
 	bool fIsAdult;
-	ShowCostVector fShowCostVector;
+	ShowProviderVector fShowProviderVector;
 
 protected:
 	ShowDetail(DataFilerPtr filerPtr) { readFromFiler(filerPtr); }
@@ -49,7 +48,6 @@ public:
 
 	// Data Get/Set Methods
 	const ShowID& getShowID() const { return(fShowID); }
-	const ProviderID& getProviderID() const { return(fProviderID); }
 	const char* getName() const { return fName.c_str(); }
 	const char* getEpisodeName() const { return fEpisodeName.c_str(); }
 	const char* getEpisodeNumber() const { return fEpisodeNumber.c_str(); }
@@ -63,8 +61,8 @@ public:
 		{ categoryIDVector.copy(fCategoryIDVector); }
 	const RatingID& getRatingID() const { return fRatingID; }
 	bool getIsAdult() const { return fIsAdult; }
-	void getShowCostVector(ShowCostVector& showCostVector) const
-		{ showCostVector.copy(fShowCostVector); }
+	void getShowProviderVector(ShowProviderVector& showProviderVector) const
+		{ showProviderVector.copy(fShowProviderVector); }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;
