@@ -62,7 +62,8 @@ void ShowCost::readFromFiler(DataFilerPtr filerPtr)
 	fShowCostType = ConvertStringToShowCostType(filerPtr->readString().c_str());
 	fCostPtr = filerPtr->readObject(MoneyConstructor());
 	fCostDisplay.copy(filerPtr->readString().c_str());
-	fRentalHours = filerPtr->readShort();
+	fRentalWindowDays = filerPtr->readShort();
+	fRentalPeriodHours = filerPtr->readShort();
 }
 
 /******************************************************************************/
@@ -72,7 +73,8 @@ void ShowCost::writeToFiler(DataFilerPtr filerPtr) const
 	filerPtr->writeString(ConvertShowCostTypeToString(fShowCostType).c_str());
 	filerPtr->writeObject(fCostPtr);
 	filerPtr->writeString(fCostDisplay.c_str());
-	filerPtr->writeShort(fRentalHours.getValue());
+	filerPtr->writeShort(fRentalWindowDays.getValue());
+	filerPtr->writeShort(fRentalPeriodHours.getValue());
 }
 
 /******************************************************************************/

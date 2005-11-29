@@ -141,7 +141,7 @@ public:
 	StatusCode setProvider(const ProviderID& providerID, const char* userID, const char* password);
 
 	CheckShowAvailRespPtr checkShowAvail(const ShowID& showID, const ProviderID& providerID,
-		StatusCode& statusCode);
+		const ShowCostPtr& showCostPtr, StatusCode& statusCode);
 	RentShowRespPtr rentShow(const ShowID& showID, const ProviderID& providerID, const ShowCostPtr& approvedCostPtr);
 
 	StatusCode rentedShowList(RentedShowSearchVector& rentedShowSearchVector);

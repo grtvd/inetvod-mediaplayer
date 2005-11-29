@@ -23,6 +23,7 @@ void CheckShowAvailRqst::writeToFiler(DataFilerPtr filerPtr) const
 {
 	filerPtr->writeString(fShowID.c_str());
 	filerPtr->writeString(fProviderID.c_str());
+	filerPtr->writeObject(fShowCostPtr);
 }
 
 /******************************************************************************/
@@ -30,7 +31,7 @@ void CheckShowAvailRqst::writeToFiler(DataFilerPtr filerPtr) const
 
 void CheckShowAvailResp::readFromFiler(DataFilerPtr filerPtr)
 {
-	fShowCostVector.readFromFiler(filerPtr);
+	fShowCostPtr = filerPtr->readObject(ShowCostConstructor());
 }
 
 /******************************************************************************/

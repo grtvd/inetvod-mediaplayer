@@ -31,7 +31,8 @@ protected:
 	ShowCostType fShowCostType;
 	MoneyPtr fCostPtr;
 	CStr32 fCostDisplay;
-	TInt16 fRentalHours;
+	TInt16 fRentalWindowDays;
+	TInt16 fRentalPeriodHours;
 
 protected:
 	ShowCost(DataFilerPtr filerPtr) { readFromFiler(filerPtr); }
@@ -54,7 +55,8 @@ public:
 	ShowCostType getShowCostType() const { return fShowCostType; }
 	MoneyPtr getCost() const { return fCostPtr; }
 	const char* getCostDisplay();
-	TInt16 getRentalHours() const { return fRentalHours; }
+	TInt16 getRentalWindowDays() const { return fRentalWindowDays; }
+	TInt16 getRentalPeriodHours() const { return fRentalPeriodHours; }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;

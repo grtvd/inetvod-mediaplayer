@@ -700,7 +700,7 @@ StatusCode Session::setProvider(const ProviderID& providerID, const char* userID
 /******************************************************************************/
 
 CheckShowAvailRespPtr Session::checkShowAvail(const ShowID& showID, const ProviderID& providerID,
-	StatusCode& statusCode)
+	const ShowCostPtr& showCostPtr, StatusCode& statusCode)
 {
 	CStrVar statusMessage;
 
@@ -712,6 +712,7 @@ CheckShowAvailRespPtr Session::checkShowAvail(const ShowID& showID, const Provid
 	checkShowAvailRqstPtr = CheckShowAvailRqst::newInstance();
 	checkShowAvailRqstPtr->setShowID(showID);
 	checkShowAvailRqstPtr->setProviderID(providerID);
+	checkShowAvailRqstPtr->setShowCost(showCostPtr);
 
 	ScreenPtr waitScreenPtr = WaitScreen::newInstance();
 	try

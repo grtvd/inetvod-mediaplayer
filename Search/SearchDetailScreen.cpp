@@ -29,8 +29,8 @@ const ControlID SearchDetailScreen::fProviderLabelID("providerlabel");
 const ControlID SearchDetailScreen::fProviderID("provider");
 const ControlID SearchDetailScreen::fCostLabelID("costlabel");
 const ControlID SearchDetailScreen::fCostID("cost");
-const ControlID SearchDetailScreen::fRentalHoursLabelID("rentalhourslabel");
-const ControlID SearchDetailScreen::fRentalHoursID("rentalhours");
+const ControlID SearchDetailScreen::fRentalPeriodHoursLabelID("rentalperiodhourslabel");
+const ControlID SearchDetailScreen::fRentalPeriodHoursID("rentalperiodhours");
 const ControlID SearchDetailScreen::fRentNowID("rentnow");
 
 /******************************************************************************/
@@ -177,16 +177,16 @@ void SearchDetailScreen::createControls()
 	newControl(labelControlPtr);
 	top += 20;
 
-	labelControlPtr = LabelControl::newInstance(fRentalHoursLabelID, fScreenID,
+	labelControlPtr = LabelControl::newInstance(fRentalPeriodHoursLabelID, fScreenID,
 		RectWH(tempAlign - 125, top, labelWidth, 20), "Rental Period:");
 	labelControlPtr->setHorzAlign(ha_Right);
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 
 	tempStr.copy("n/a");
-	if(!showCostPtr->getRentalHours().isUndefined())
-		tempStr.copyVarg("%s hrs.", showCostPtr->getRentalHours().c_str());
-	labelControlPtr = LabelControl::newInstance(fRentalHoursID, fScreenID,
+	if(!showCostPtr->getRentalPeriodHours().isUndefined())
+		tempStr.copyVarg("%s hrs.", showCostPtr->getRentalPeriodHours().c_str());
+	labelControlPtr = LabelControl::newInstance(fRentalPeriodHoursID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
 		tempStr.c_str());
 	labelControlPtr->setFontID(gSmallWhiteFontID);

@@ -257,17 +257,13 @@ RentStep RentScreen::checkShowAvail()
 	StatusCode statusCode;
 
 	checkShowAvailRespPtr = sessionPtr->checkShowAvail(fRentDataPtr->getShowID(),
-		fRentDataPtr->getProviderID(), statusCode);
+		fRentDataPtr->getProviderID(), fRentDataPtr->getShowCost(), statusCode);
 	if(statusCode == sc_InvalidProviderUserIDPassword)
 		return ss_HaveProviderStep;
 	if(statusCode != sc_Success)
 		return ss_Undefined;
 
-	ShowCostVector showCostVector;
-	ShowCostPtr showCostPtr;
-
-	checkShowAvailRespPtr->getShowCostVector(showCostVector);
-	showCostPtr = showCostVector[0];	//TODO: If multiple, need to confirm rental period/cost with user
+	ShowCostPtr showCostPtr = checkShowAvailRespPtr->getShowCost();
 
 	fRentDataPtr->setShowCost(showCostPtr);
 	if(showCostPtr->getShowCostType() == sct_PayPerView)

@@ -15,6 +15,7 @@ class CheckShowAvailRqst : public Streamable
 protected:
 	ShowID fShowID;
 	ProviderID fProviderID;
+	ShowCostPtr fShowCostPtr;
 
 protected:
 	CheckShowAvailRqst() {}
@@ -27,6 +28,7 @@ public:
 
 	void setShowID(const ShowID& showID) { fShowID = showID; }
 	void setProviderID(const ProviderID& providerID) { fProviderID = providerID; }
+	void setShowCost(const ShowCostPtr& showCostPtr) { fShowCostPtr = showCostPtr; }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;
@@ -49,7 +51,7 @@ public:
 class CheckShowAvailResp : public Streamable
 {
 protected:
-	ShowCostVector fShowCostVector;
+	ShowCostPtr fShowCostPtr;
 
 protected:
 	CheckShowAvailResp(DataFilerPtr filerPtr) { readFromFiler(filerPtr); }
@@ -61,8 +63,7 @@ public:
 
 	virtual const char* className() const { return "CheckShowAvailResp"; }
 
-	void getShowCostVector(ShowCostVector& showCostVector) const
-		{ showCostVector.copy(fShowCostVector); }
+	ShowCostPtr getShowCost() const { return fShowCostPtr; }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;
