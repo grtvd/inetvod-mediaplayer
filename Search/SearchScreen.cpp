@@ -129,7 +129,7 @@ void SearchScreen::onButton(const ControlID& controlID)
 		ShowSearchVector showSearchVector;
 
 		editControlPtr = getControl(fShowNameID);
-		fSearchDataPtr->setPartialName(editControlPtr->getText());
+		fSearchDataPtr->setSearch(editControlPtr->getText());
 
 		if(sessionPtr->showSearch(fSearchDataPtr, showSearchVector))
 			SearchResultsScreen::newInstance(showSearchVector);

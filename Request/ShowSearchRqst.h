@@ -16,7 +16,7 @@ namespace asi
 class ShowSearchRqst : public Streamable
 {
 protected:
-	CStr64 fPartialName;
+	CStr64 fSearch;
 
 	ProviderIDVector fProviderIDVector;
 	CategoryIDVector fCategoryIDVector;
@@ -33,7 +33,7 @@ public:
 
 	virtual const char* className() const { return "ShowSearchRqst"; }
 
-	void setPartialName(const char* partialName) { fPartialName.copy(partialName); }
+	void setSearch(const char* search) { fSearch.copy(search); }
 
 	void setProviderIDVector(const ProviderIDVector& providerIDVector)
 		{ fProviderIDVector.copy(providerIDVector); }

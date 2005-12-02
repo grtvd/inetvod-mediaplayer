@@ -540,7 +540,7 @@ bool Session::showSearch(const SearchDataPtr& searchDataPtr, ShowSearchVector& s
 		ratingIDVector.push_back(searchDataPtr->getRatingID());
 
 	showSearchRqstPtr = ShowSearchRqst::newInstance();
-	showSearchRqstPtr->setPartialName(searchDataPtr->getPartialName());
+	showSearchRqstPtr->setSearch(searchDataPtr->getSearch());
 	showSearchRqstPtr->setProviderIDVector(providerIDVector);
 	showSearchRqstPtr->setCategoryIDVector(categoryIDVector);
 	showSearchRqstPtr->setRatingIDVector(ratingIDVector);

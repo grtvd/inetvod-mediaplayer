@@ -21,7 +21,7 @@ void ShowSearchRqst::readFromFiler(DataFilerPtr filerPtr)
 
 void ShowSearchRqst::writeToFiler(DataFilerPtr filerPtr) const
 {
-	filerPtr->writeString(fPartialName.c_str());
+	filerPtr->writeString(fSearch.c_str());
 
 	fProviderIDVector.writeToFiler(filerPtr);
 	fCategoryIDVector.writeToFiler(filerPtr);

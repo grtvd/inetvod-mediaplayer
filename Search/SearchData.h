@@ -13,7 +13,7 @@ namespace asi
 class SearchData : public Object
 {
 protected:
-	CStr64 fPartialName;
+	CStr64 fSearch;
 
 	ProviderID fProviderID;
 	CategoryID fCategoryID;
@@ -27,8 +27,8 @@ protected:
 public:
 	static ObjectPtr newInstance() { return ObjectPtr(new SearchData()); }
 
-	void setPartialName(const char* partialName) { fPartialName.copy(partialName); fPartialName.compress(csw_Trailing); }
-	const char* getPartialName() const { return fPartialName.c_str(); }
+	void setSearch(const char* search) { fSearch.copy(search); fSearch.compress(csw_Trailing); }
+	const char* getSearch() const { return fSearch.c_str(); }
 
 	void setProviderID(const ProviderID& providerID) { fProviderID = providerID; }
 	ProviderID getProviderID() const { return fProviderID; }
