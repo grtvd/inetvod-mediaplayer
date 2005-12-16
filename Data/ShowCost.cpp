@@ -57,6 +57,31 @@ const char* ShowCost::getCostDisplay()
 
 /******************************************************************************/
 
+CStr64 ShowCost::formatRental()
+{
+	CStr64 tempStr;
+
+	if(!fRentalPeriodHours.isUndefined())
+	{
+		if(fRentalPeriodHours.getValue() > 48)
+			tempStr.copyVarg("%d days", fRentalPeriodHours.getValue() / 24);
+		else
+			tempStr.copyVarg("%s hrs.", fRentalPeriodHours.c_str());
+	}
+	if(!fRentalWindowDays.isUndefined())
+	{
+		if(tempStr.hasLen())
+			tempStr.concat(" / ");
+		tempStr.concatVarg("%s days", fRentalWindowDays.c_str());
+	}
+
+	if(!tempStr.hasLen())
+		tempStr.copy("n/a");
+	return tempStr;
+}
+
+/******************************************************************************/
+
 void ShowCost::readFromFiler(DataFilerPtr filerPtr)
 {
 	fShowCostType = ConvertStringToShowCostType(filerPtr->readString().c_str());

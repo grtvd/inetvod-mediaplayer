@@ -58,6 +58,8 @@ public:
 	TInt16 getRentalWindowDays() const { return fRentalWindowDays; }
 	TInt16 getRentalPeriodHours() const { return fRentalPeriodHours; }
 
+	CStr64 formatRental();
+
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;
 

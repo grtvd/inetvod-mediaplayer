@@ -44,6 +44,7 @@ public:
 	virtual bool key(int key);
 	virtual void onButton(const ControlID& controlID);
 protected:
+	RentStep allowAnonymous();
 	RentStep checkShowAvail();
 	void rentShow();
 	bool setProvider();

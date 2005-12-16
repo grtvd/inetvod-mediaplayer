@@ -13,12 +13,45 @@ namespace asi
 /******************************************************************************/
 /******************************************************************************/
 
-ShowProviderPtr ShowProviderListControl::getFocusedItemValue() const
+void ShowProviderListControl::initShowProviderItemList(const ShowProviderVector& showProviderVector)
 {
-	if((fFocusedItem >= 0) && (fFocusedItem < (int)fShowProviderVector.size()))
-		return fShowProviderVector[fFocusedItem];
+	ShowProviderVector::const_iterator showProvderIter;
+	ShowProviderPtr showProviderPtr;
+	ShowCostVector showCostVector;
+	ShowCostVector::const_iterator showCostIter;
 
-	return ShowProviderPtr();
+	fShowProviderItemVector.clear();
+
+	//filerPtr->writeLong(size());
+	for(showProvderIter = showProviderVector.begin();
+		showProvderIter != showProviderVector.end(); ++showProvderIter)
+	{
+		showProviderPtr = *showProvderIter;
+		showProviderPtr->getShowCostVector(showCostVector);
+		for(showCostIter = showCostVector.begin(); showCostIter != showCostVector.end();
+			++showCostIter)
+		{
+			fShowProviderItemVector.push_back(ShowProviderItem::newInstance(
+				showProviderPtr->getProviderID(), *showCostIter));
+		}
+	}
+}
+
+/******************************************************************************/
+
+void ShowProviderListControl::setShowProviderVector(const ShowProviderVector& showProviderVector)
+{
+	initShowProviderItemList(showProviderVector);
+}
+
+/******************************************************************************/
+
+ShowProviderItemPtr ShowProviderListControl::getFocusedItemValue() const
+{
+	if((fFocusedItem >= 0) && (fFocusedItem < (int)fShowProviderItemVector.size()))
+		return fShowProviderItemVector[fFocusedItem];
+
+	return ShowProviderItemPtr();
 }
 
 /******************************************************************************/
@@ -27,9 +60,11 @@ void ShowProviderListControl::drawHeader(bool /*showFocus*/) const
 {
 	FontPtr fontPtr = MainApp::getThe()->getFont(gNormalYellowFontID);
 
-	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 80, fHeaderHeight), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 280, fHeaderHeight), ha_Left, va_Middle,
 		"Provider", fontPtr);
-	DrawTextAligned(RectWH(fRect.getWidth() - 60, 0, 50, fHeaderHeight), ha_Left, va_Middle,
+	DrawTextAligned(RectWH(fRect.getWidth() - 260, 0, 175, fHeaderHeight), ha_Left, va_Middle,
+		"Rental", fontPtr);
+	DrawTextAligned(RectWH(fRect.getWidth() - 75, 0, 65, fHeaderHeight), ha_Left, va_Middle,
 		"Price", fontPtr);
 }
 
@@ -37,25 +72,25 @@ void ShowProviderListControl::drawHeader(bool /*showFocus*/) const
 
 int ShowProviderListControl::getItemCount() const
 {
-	return fShowProviderVector.size();
+	return fShowProviderItemVector.size();
 }
 
 /******************************************************************************/
 
 void ShowProviderListControl::drawItem(int item) const
 {
-	ShowProviderPtr showProviderPtr = fShowProviderVector[item];
-	ShowCostVector showCostVector;
+	ShowProviderItemPtr showProviderItemPtr = fShowProviderItemVector[item];
 	int itemHeight = getItemHeight(item);
 	FontPtr fontPtr = MainApp::getThe()->getFont(gNormalWhiteFontID);
 
-	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 80, itemHeight), ha_Left, va_Middle,
-		MainApp::getThe()->getSession()->getProviderName(showProviderPtr->getProviderID()),
-		fontPtr);
+	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 280, itemHeight), ha_Left, va_Middle,
+		showProviderItemPtr->getProvider()->getName(), fontPtr);
 
-	showProviderPtr->getShowCostVector(showCostVector);
-	DrawTextAligned(RectWH(fRect.getWidth() - 60, 0, 50, itemHeight), ha_Left, va_Middle,
-		showCostVector[0]->getCostDisplay(), fontPtr);		//TODO: Showing first ShowCost
+	DrawTextAligned(RectWH(fRect.getWidth() - 260, 0, 175, itemHeight), ha_Left, va_Middle,
+		showProviderItemPtr->getShowCost()->formatRental().c_str(), fontPtr);
+
+	DrawTextAligned(RectWH(fRect.getWidth() - 75, 0, 65, itemHeight), ha_Left, va_Middle,
+		showProviderItemPtr->getShowCost()->getCostDisplay(), fontPtr);
 }
 
 /******************************************************************************/

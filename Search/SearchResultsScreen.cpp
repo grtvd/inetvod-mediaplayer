@@ -8,7 +8,6 @@
 #include "SearchResultsScreen.h"
 #include "ShowSearchListControl.h"
 #include "SearchDetailScreen.h"
-#include "PickProviderScreen.h"
 
 using namespace asi;
 

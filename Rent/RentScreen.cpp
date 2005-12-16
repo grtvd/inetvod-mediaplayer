@@ -6,6 +6,7 @@
 #include "StdAfx.h"
 #include "Core.h"
 #include "RentScreen.h"
+#include "PickRentalControl.h"
 #include "AskHaveProviderControl.h"
 #include "NeedProviderControl.h"
 #include "HaveProviderControl.h"
@@ -19,6 +20,7 @@ namespace asi
 enum RentStep
 {
 	ss_Undefined = 0,
+	ss_PickRentalStep,
 	ss_AskHaveProviderStep,
 	ss_NeedProviderStep,
 	ss_HaveProviderStep,
@@ -59,17 +61,16 @@ void RentScreen::createControls()
 {
 	SessionPtr sessionPtr = MainApp::getThe()->getSession();
 
-	if((fRentDataPtr->getShowCost()->getShowCostType() == sct_Free) ||
-		sessionPtr->isMemberOfProvider(fRentDataPtr->getProviderID()))
+	if(fRentDataPtr->hasMultipleRentals())
+		openStep(ss_PickRentalStep);
+	else
 	{
-		RentStep nextStep = checkShowAvail();
+		RentStep nextStep = allowAnonymous();
 		if (nextStep == ss_Undefined)
 			close();
 		else
 			openStep(nextStep);
 	}
-	else
-		openStep(ss_AskHaveProviderStep);
 }
 
 /******************************************************************************/
@@ -80,8 +81,12 @@ void RentScreen::openStep(int step)
 
 	switch(step)
 	{
-		case ss_AskHaveProviderStep:
+		case ss_PickRentalStep:
 		default:
+			containerControlPtr = PickRentalControl::newInstance(fStepControlID, getScreenID(),
+				RectWH(0, 0, fContentWidth, fContentHeight));
+			break;
+		case ss_AskHaveProviderStep:
 			containerControlPtr = AskHaveProviderControl::newInstance(fStepControlID, getScreenID(),
 				RectWH(0, 0, fContentWidth, fContentHeight));
 			break;
@@ -128,9 +133,22 @@ bool RentScreen::key(int key)
 
 	if(key == ek_Back)
 	{
-		if(fCurStep == ss_AskHaveProviderStep)
+		if(fCurStep == ss_PickRentalStep)
 		{
-			close();
+			if(closeStep(false))
+				close();
+			return true;
+		}
+		else if(fCurStep == ss_AskHaveProviderStep)
+		{
+			if(closeStep(false))
+			{
+				if(fRentDataPtr->hasMultipleRentals())
+					openStep(ss_PickRentalStep);
+				else
+					close();
+			}
+
 			return true;
 		}
 		else if(fCurStep == ss_NeedProviderStep)
@@ -156,7 +174,14 @@ bool RentScreen::key(int key)
 		}
 		else if(fCurStep == ss_ConfirmChargeStep)
 		{
-			close();
+			if(closeStep(false))
+			{
+				if(fRentDataPtr->hasMultipleRentals())
+					openStep(ss_PickRentalStep);
+				else
+					close();
+			}
+
 			return true;
 		}
 	}
@@ -168,7 +193,23 @@ bool RentScreen::key(int key)
 
 void RentScreen::onButton(const ControlID& controlID)
 {
-	if(fCurStep == ss_AskHaveProviderStep)
+	if(fCurStep == ss_PickRentalStep)
+	{
+		if(controlID == PickRentalControl::ProviderListID)
+		{
+			if(closeStep())
+			{
+				RentStep nextStep = allowAnonymous();
+				if(nextStep == ss_Undefined)
+					close();
+				else
+					openStep(nextStep);
+			}
+
+			return;
+		}
+	}
+	else if(fCurStep == ss_AskHaveProviderStep)
 	{
 		if(controlID == AskHaveProviderControl::HaveMembershipID)
 		{
@@ -246,6 +287,21 @@ void RentScreen::onButton(const ControlID& controlID)
 	}
 
 	Screen::onButton(controlID);
+}
+
+/******************************************************************************/
+
+RentStep RentScreen::allowAnonymous()
+{
+	SessionPtr sessionPtr = MainApp::getThe()->getSession();
+
+	if((fRentDataPtr->getShowCost()->getShowCostType() == sct_Free) ||
+		sessionPtr->isMemberOfProvider(fRentDataPtr->getProviderID()))
+	{
+		return checkShowAvail();
+	}
+	else
+		return ss_AskHaveProviderStep;
 }
 
 /******************************************************************************/

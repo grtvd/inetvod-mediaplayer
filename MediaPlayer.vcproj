@@ -393,6 +393,12 @@
 				RelativePath=".\Controls\RentedShowListControl.h">
 			</File>
 			<File
+				RelativePath=".\Controls\ShowProviderItem.cpp">
+			</File>
+			<File
+				RelativePath=".\Controls\ShowProviderItem.h">
+			</File>
+			<File
 				RelativePath=".\Controls\ShowProviderListControl.cpp">
 			</File>
 			<File
@@ -614,12 +620,6 @@
 				RelativePath=".\Search\CategorySelectScreen.h">
 			</File>
 			<File
-				RelativePath=".\Search\PickProviderScreen.cpp">
-			</File>
-			<File
-				RelativePath=".\Search\PickProviderScreen.h">
-			</File>
-			<File
 				RelativePath=".\Search\ProviderSelectScreen.cpp">
 			</File>
 			<File
@@ -803,6 +803,12 @@
 			</File>
 			<File
 				RelativePath=".\Rent\NeedProviderControl.h">
+			</File>
+			<File
+				RelativePath=".\Rent\PickRentalControl.cpp">
+			</File>
+			<File
+				RelativePath=".\Rent\PickRentalControl.h">
 			</File>
 			<File
 				RelativePath=".\Rent\RentData.cpp">

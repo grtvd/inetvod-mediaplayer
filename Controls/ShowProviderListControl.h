@@ -5,6 +5,8 @@
 #ifndef ShowProviderListControlH
 #define ShowProviderListControlH
 
+#include "ShowProviderItem.h"
+
 namespace asi
 {
 
@@ -13,7 +15,7 @@ namespace asi
 class ShowProviderListControl : public ListControl
 {
 protected:
-	ShowProviderVector fShowProviderVector;
+	ShowProviderItemVector fShowProviderItemVector;
 
 	ShowProviderListControl(const ControlID& controlID, const ScreenID& screenID)
 		: ListControl(controlID, screenID) {}
@@ -24,10 +26,12 @@ public:
 		const Rect& rect)
 		{ return ListControl::newInstance(new ShowProviderListControl(controlID, screenID), rect); }
 
-	void setShowProviderVector(const ShowProviderVector& showProviderVector)
-		{ fShowProviderVector.copy(showProviderVector); }
+protected:
+	void initShowProviderItemList(const ShowProviderVector& showProviderVector);
+public:
+	void setShowProviderVector(const ShowProviderVector& showProviderVector);
 
-	ShowProviderPtr getFocusedItemValue() const;
+	ShowProviderItemPtr getFocusedItemValue() const;
 
 protected:
 	virtual void drawHeader(bool showFocus) const;

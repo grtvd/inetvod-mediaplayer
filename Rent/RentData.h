@@ -14,6 +14,9 @@ class RentData : public Object
 {
 protected:
 	ShowDetailPtr fShowDetailPtr;
+
+	bool fHasMultipleRentals;
+
 	ProviderPtr fProviderPtr;
 	ShowCostPtr fShowCostPtr;
 
@@ -31,6 +34,8 @@ public:
 	ShowDetailPtr getShowDetail() const { return fShowDetailPtr; }
 	ShowID getShowID() const { return fShowDetailPtr->getShowID(); }
 
+	bool hasMultipleRentals() { return fHasMultipleRentals; }
+
 	ProviderID getProviderID() const { return fProviderPtr->getProviderID(); }
 	const char* getProviderName() const { return fProviderPtr->getName(); }
 
@@ -42,6 +47,9 @@ public:
 
 	void setPassword(const char* password) { fPassword.copy(password); }
 	const char* getPassword() const { return fPassword.c_str(); }
+
+	void setRental(const ProviderPtr& providerPtr, const ShowCostPtr& showCostPtr)
+		{ fProviderPtr = providerPtr; fShowCostPtr = showCostPtr; }
 
 	friend class RefCountPtr<RentData>;
 };
