@@ -34,6 +34,7 @@ protected:
 	static const ControlID fCostID;
 	static const ControlID fRentalPeriodHoursLabelID;
 	static const ControlID fRentalPeriodHoursID;
+	static const ControlID fMultiRentalsID;
 	static const ControlID fRentNowID;
 
 	ShowDetailPtr fShowDetailPtr;

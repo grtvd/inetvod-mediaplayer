@@ -82,17 +82,12 @@ void ShowSearchListControl::drawItem(int item) const
 		date.copy(showSearchPtr->getReleasedYear().c_str());
 
 	showSearchPtr->getShowProviderVector(showProviderVector);
-	if(showProviderVector.size() == 1)
-	{
-		showProviderPtr = showProviderVector[0];
-
-		providerName.copy(MainApp::getThe()->getSession()->getProviderName(showProviderPtr->getProviderID()));
-
-		showProviderPtr->getShowCostVector(showCostVector);
-		cost.copy(showCostVector[0]->getCostDisplay());		//TODO: Showing first ShowCost
-	}
-	else
-		providerName.copy("(multiple)");
+	showProviderPtr = showProviderVector[0];
+	providerName.copy(MainApp::getThe()->getSession()->getProviderName(showProviderPtr->getProviderID()));
+	showProviderPtr->getShowCostVector(showCostVector);
+	cost.copy(showCostVector[0]->getCostDisplay());
+	if((showProviderVector.size() > 1) || (showCostVector.size() > 1))
+		cost.copyVarg("*%s",CStr32(cost.c_str()).c_str());
 
 	DrawTextAligned(RectWH(10, 0, fRect.getWidth() - 295, itemLine1Height), ha_Left, va_Middle,
 		showSearchPtr->getName(), fontPtr);

@@ -31,6 +31,7 @@ const ControlID SearchDetailScreen::fCostLabelID("costlabel");
 const ControlID SearchDetailScreen::fCostID("cost");
 const ControlID SearchDetailScreen::fRentalPeriodHoursLabelID("rentalperiodhourslabel");
 const ControlID SearchDetailScreen::fRentalPeriodHoursID("rentalperiodhours");
+const ControlID SearchDetailScreen::fMultiRentalsID("multirentals");
 const ControlID SearchDetailScreen::fRentNowID("rentnow");
 
 /******************************************************************************/
@@ -152,7 +153,7 @@ void SearchDetailScreen::createControls()
 
 	ShowProviderVector showProviderVector;
 	fShowDetailPtr->getShowProviderVector(showProviderVector);
-	ShowProviderPtr showProviderPtr = showProviderVector[0];	//TODO: Need to deal with multiple
+	ShowProviderPtr showProviderPtr = showProviderVector[0];
 
 	labelControlPtr = LabelControl::newInstance(fProviderID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20),
@@ -169,7 +170,7 @@ void SearchDetailScreen::createControls()
 
 	ShowCostVector showCostVector;
 	showProviderPtr->getShowCostVector(showCostVector);
-	ShowCostPtr showCostPtr = showCostVector[0];	//TODO: Need to deal with multiple
+	ShowCostPtr showCostPtr = showCostVector[0];
 
 	labelControlPtr = LabelControl::newInstance(fCostID, fScreenID,
 		RectWH(tempAlign, top, fieldWidth, 20), showCostPtr->getCostDisplay());
@@ -183,14 +184,21 @@ void SearchDetailScreen::createControls()
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
 
-	tempStr.copy("n/a");
-	if(!showCostPtr->getRentalPeriodHours().isUndefined())
-		tempStr.copyVarg("%s hrs.", showCostPtr->getRentalPeriodHours().c_str());
 	labelControlPtr = LabelControl::newInstance(fRentalPeriodHoursID, fScreenID,
-		RectWH(tempAlign, top, fieldWidth, 20),
-		tempStr.c_str());
+		RectWH(tempAlign, top, fieldWidth, 20), showCostPtr->formatRental().c_str());
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
+	top += 20;
+
+	if((showProviderVector.size() > 1) || (showCostVector.size() > 1))
+	{
+		labelControlPtr = LabelControl::newInstance(fMultiRentalsID, fScreenID,
+			RectWH(tempAlign - 125, top, labelWidth + fieldWidth + 5, 20), "* Additional rentals available.");
+		labelControlPtr->setHorzAlign(ha_Right);
+		labelControlPtr->setFontID(gSmallWhiteFontID);
+		newControl(labelControlPtr);
+	}
+	
 
 	top = 325;
 	controlPtr = ButtonControl::newInstance(fRentNowID, fScreenID,
