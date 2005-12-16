@@ -41,17 +41,20 @@ void ConfirmChargeControl::createControls()
 	int top;
 
 	top = 20;
-	controlPtr = TextControl::newInstance(fChargeTextID, fScreenID, RectWH(10, top, fRect.getWidth() - 20, 112), NULL);
+	controlPtr = TextControl::newInstance(fChargeTextID, fScreenID,
+		RectWH(10, top, fRect.getWidth() - 20, 112), NULL);
 	newControl(controlPtr);
 
 	top += controlPtr->getRect().getHeight() + 28;
-	buttonControlPtr = ButtonControl::newInstance(ChargeAccountID, fScreenID, RectWH(screenCenter - 175, top, 350, 38), "Yes, charge my account");
+	buttonControlPtr = ButtonControl::newInstance(ChargeAccountID, fScreenID,
+		RectWH(screenCenter - 175, top, 350, 38), "Yes, charge my account");
 	buttonControlPtr->setHorzAlign(ha_Left);
 	buttonControlPtr->setFocus(true);
 	newControl(buttonControlPtr);
 
 	top += buttonControlPtr->getRect().getHeight() + 6;
-	buttonControlPtr = ButtonControl::newInstance(DontChargeAccountID, fScreenID, RectWH(screenCenter - 175, top, 350, 38), "No, don't charge my account");
+	buttonControlPtr = ButtonControl::newInstance(DontChargeAccountID, fScreenID,
+		RectWH(screenCenter - 175, top, 350, 38), "No, don't charge my account");
 	buttonControlPtr->setHorzAlign(ha_Left);
 	newControl(buttonControlPtr);
 }
