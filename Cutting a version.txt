@@ -15,6 +15,7 @@
 -- Enter new "Version"
 -- Should prompt to update the ProductCode and PackageCode, select "yes".
 - build
+- (Note: building seems to delete and recreate the 'Release' folder, destroying the .svn information)
 
 - create zips in C:\projects\iNetVOD\mediaplayer\versions
 
@@ -35,7 +36,6 @@
 
 
 - commit all changed files, use label: "mediaplayer: Cut version 1.0.100x."
-- Label $\projects\iNetVOD\PS2 VSS: v1.0.100x
 
 
 - Copy ZIP to Server
