@@ -1,3 +1,5 @@
+Support "undefined" values for writeShort() in BinaryDataFiler.
+
 Add support for DownloadShowRqst
 
 ShowSearchRqst

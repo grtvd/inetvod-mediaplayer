@@ -98,8 +98,8 @@ void ShowCost::writeToFiler(DataFilerPtr filerPtr) const
 	filerPtr->writeString(ConvertShowCostTypeToString(fShowCostType).c_str());
 	filerPtr->writeObject(fCostPtr);
 	filerPtr->writeString(fCostDisplay.c_str());
-	filerPtr->writeShort(fRentalWindowDays.getValue());
-	filerPtr->writeShort(fRentalPeriodHours.getValue());
+	fRentalWindowDays.writeToFiler(filerPtr);	//TODO: should try to support through writeShort
+	fRentalPeriodHours.writeToFiler(filerPtr);	//TODO: should try to support through writeShort
 }
 
 /******************************************************************************/
