@@ -14,9 +14,8 @@ enum StatusCode
 {
 	sc_Success = 0,
 
-	sc_InvalidUserID = 1000,
+	sc_InvalidUserIDPassword = 1000,
 	sc_InvalidSession = 1001,
-	sc_UserIDPasswordMismatch = 1002,
 	sc_InvalidProviderUserIDPassword = 1003,
 
 	sc_GeneralError = 9999

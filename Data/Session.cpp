@@ -392,7 +392,7 @@ StatusCode Session::signon()
 			fIsUserLoggedOn = true;
 			return statusCode;
 		}
-		else if((statusCode == sc_UserIDPasswordMismatch) || (statusCode == sc_InvalidUserID))
+		else if(statusCode == sc_InvalidUserIDPassword)
 			fUserPassword.clear();
 
 		statusMessage.copy(dataRequestorPtr->getStatusMessage());
