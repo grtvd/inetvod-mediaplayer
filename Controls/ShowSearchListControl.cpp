@@ -77,7 +77,18 @@ void ShowSearchListControl::drawItem(int item) const
 
 	date.clear();
 	if(!showSearchPtr->getReleasedOn().isUndefined())
-		date.copy(showSearchPtr->getReleasedOn().c_str(dtf_M_YY));
+	{
+		TTimeSpan timeSpan = TDate::getSystemDate().compare(showSearchPtr->getReleasedOn());
+
+		if(timeSpan.getTotalDays() == 0.0)
+			date.copy("Today");
+		else if(timeSpan.getTotalDays() <= 7.0)
+			date.copy(showSearchPtr->getReleasedOn().getDayOfWeek().c_str(dwf_Sun));
+		else if(timeSpan.getTotalDays() <= 365.0)
+			date.copy(showSearchPtr->getReleasedOn().c_str(dtf_M_D));
+		else
+			date.copy(showSearchPtr->getReleasedOn().c_str(dtf_YYYY));
+	}
 	else if(!showSearchPtr->getReleasedYear().isUndefined())
 		date.copy(showSearchPtr->getReleasedYear().c_str());
 

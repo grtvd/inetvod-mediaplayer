@@ -23,6 +23,7 @@ enum TDateTimeFormat
 								// expample of Feb. 3rd, 2004 at 1:05:07 PM
 	//TODO: dtf_ISO8601_Date,
 	//TODO: dtf_ISO8601_DateTime,
+	dtf_YYYY,					// 2004
 	dtf_MM_DD_YY,				// 02/03/04
 	dtf_M_D_YYYY,				// 2/3/2004
 	dtf_MM_DD_YYYY,				// 02/03/2004
@@ -167,9 +168,11 @@ public:
 
 	TDayOfWeek getDayOfWeek() const { return TDayOfWeek(TDateTimeUtil::dayOfWeek(fDate)); }
 	void getMDY(int& month, int& day, int& year) { TDateTimeUtil::dateToMDY(fDate, month, day, year); }
-	int compare(const TDate& tDate);
+	TTimeSpan compare(const TDate& tDate);
 
 	virtual const char* c_str(TDateTimeFormat format) const;
+
+	static TDate getSystemDate();
 };
 
 /******************************************************************************/

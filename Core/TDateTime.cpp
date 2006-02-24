@@ -107,6 +107,10 @@ CStr32 TDateTimeUtil::dateTimeToString(ulong tDate, ulong tTime, TDateTimeFormat
 				//str.copyVarg("%04d-%02d-%02d", year, month, day);
 				//break;
 
+			case dtf_YYYY:
+				strDate.copyVarg("%04d", year);
+				break;
+
 			case dtf_MM_DD_YY:
 				strDate.copyVarg("%02d%c%02d%c%02d", month, DateSeparator, day,
 					DateSeparator, year % 100);
@@ -732,6 +736,16 @@ TDate::TDate(const char* str, TDateTimeFormat format)
 
 /******************************************************************************/
 
+TTimeSpan TDate::compare(const TDate& tDate)
+{
+	double d1 = (double)fDate;
+	double d2 = (double)tDate.fDate;
+
+	return TTimeSpan(d1 - d2);
+}
+
+/******************************************************************************/
+
 const char* TDate::c_str(TDateTimeFormat format) const
 {
 	CStr32 str = TDateTimeUtil::dateTimeToString(fDate, TIME_UNDEF, format);
@@ -744,6 +758,21 @@ const char* TDate::c_str(TDateTimeFormat format) const
 	tStrCpy(fFormatted.get(), size, str.c_str());
 
 	return fFormatted.get();
+}
+
+/******************************************************************************/
+
+TDate TDate::getSystemDate()
+{
+	int month;
+	int day;
+	int year;
+	ulong date;
+
+	date = TDateTimeUtil::getSystemDate();
+	TDateTimeUtil::dateToMDY(date, month, day, year);
+
+	return TDate(month, day, year);
 }
 
 /******************************************************************************/
