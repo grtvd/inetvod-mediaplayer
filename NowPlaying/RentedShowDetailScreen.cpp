@@ -192,7 +192,8 @@ void RentedShowDetailScreen::createControls()
 	top += 20;
 
 	labelControlPtr = LabelControl::newInstance(fRentedOnLabelID, fScreenID,
-		RectWH(tempAlign - 125, top, labelWidth, 20), "Rented On:");
+		RectWH(tempAlign - 125, top, labelWidth, 20),
+		(fRentedShowPtr->getShowCost()->getShowCostType() == sct_Free) ? "Added On:" : "Rented On:");
 	labelControlPtr->setHorzAlign(ha_Right);
 	labelControlPtr->setFontID(gSmallWhiteFontID);
 	newControl(labelControlPtr);
