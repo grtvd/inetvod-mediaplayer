@@ -202,7 +202,8 @@ void SearchDetailScreen::createControls()
 
 	top = 325;
 	controlPtr = ButtonControl::newInstance(fRentNowID, fScreenID,
-		RectWH(fContentWidth - 150, fContentHeight - 45, 140, 0), "Rent Now");
+		RectWH(fContentWidth - 150, fContentHeight - 45, 140, 0),
+		(showCostPtr->getShowCostType() == sct_Free) ? "Get Now" : "Rent Now");
 	controlPtr->setFocus(true);
 	newControl(controlPtr);
 }
@@ -223,7 +224,11 @@ void SearchDetailScreen::onButton(const ControlID& controlID)
 			MainApp::getThe()->closeAllScreens();
 
 			if(!rentedShowPtr.isNull())
+			{
 				RentedShowDetailScreen::newInstance(rentedShowPtr);
+
+				MessageScreen::newInstance(mp_OK, "This Show has been successfully added to your Now Playing list.");
+			}
 		}
 		return;
 	}
