@@ -21,7 +21,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="c:\projects\inetvod\glut;c:\projects\inetvod\FreeType\include;c:\projects\inetvod\FreeType\include\freetype2;C:\projects\inetvod\FTGL\include;core;controls;data;welcome;nowplaying;setup;search;request;rent;prefs"
+				AdditionalIncludeDirectories="c:\projects\glut;c:\projects\FreeType\include;c:\projects\FreeType\include\freetype2;C:\projects\FTGL\include;core;controls;data;welcome;nowplaying;setup;search;request;rent;prefs"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;USE_GLUT;XUSE_GLUT_FONT;FTGL_LIBRARY_STATIC;ERRORDEBUGON"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -45,7 +45,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Ws2_32.lib c:\projects\inetvod\glut\glut32.lib C:\Projects\inetvod\FreeType\lib\libfreetype.lib C:\Projects\inetvod\FTGL\win32_vcpp\build\ftgl_static_MT_d.lib"
+				AdditionalDependencies="Ws2_32.lib c:\projects\glut\glut32.lib C:\Projects\FreeType\lib\libfreetype.lib C:\Projects\FTGL\win32_vcpp\build\ftgl_static_MT_d.lib"
 				OutputFile="$(OutDir)/iNetVOD Media Player.exe"
 				LinkIncremental="2"
 				IgnoreDefaultLibraryNames="LIBCMTD"
