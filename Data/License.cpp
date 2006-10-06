@@ -46,6 +46,9 @@ void License::readFromFiler(DataFilerPtr filerPtr)
 	fLicenseMethod = ConvertStringToLicenseMethod(filerPtr->readString().c_str());
 	fShowURL = filerPtr->readString();
 	fLicenseURL = filerPtr->readString();
+	fContentID.copy(filerPtr->readString().c_str());
+	fUserID.copy(filerPtr->readString().c_str());
+	fPassword.copy(filerPtr->readString().c_str());
 }
 
 /******************************************************************************/
@@ -55,6 +58,9 @@ void License::writeToFiler(DataFilerPtr filerPtr) const
 	filerPtr->writeString(ConvertLicenseMethodToString(fLicenseMethod).c_str());
 	filerPtr->writeString(fShowURL.c_str());
 	filerPtr->writeString(fLicenseURL.c_str());
+	filerPtr->writeString(fContentID.c_str());
+	filerPtr->writeString(fUserID.c_str());
+	filerPtr->writeString(fPassword.c_str());
 }
 
 /******************************************************************************/

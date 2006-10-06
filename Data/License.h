@@ -30,6 +30,9 @@ protected:
 	LicenseMethod fLicenseMethod;
 	CStrVar fShowURL;
 	CStrVar fLicenseURL;
+	CStr64 fContentID;
+	CStr64 fUserID;
+	CStr32 fPassword;
 
 protected:
 	License(DataFilerPtr filerPtr) { readFromFiler(filerPtr); }
@@ -52,6 +55,9 @@ public:
 	LicenseMethod getLicenseMethod() const { return fLicenseMethod; }
 	const char* getShowURL() const { return fShowURL.c_str(); }
 	const char* getLicenseURL() const { return fLicenseURL.c_str(); }
+	const char* getContentID() const { return fContentID.c_str(); }
+	const char* getUserID() const { return fUserID.c_str(); }
+	const char* getPassword() const { return fPassword.c_str(); }
 
 	virtual void readFromFiler(DataFilerPtr filerPtr);
 	virtual void writeToFiler(DataFilerPtr filerPtr) const;
