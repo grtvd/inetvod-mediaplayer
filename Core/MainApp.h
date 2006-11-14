@@ -65,7 +65,7 @@ protected:
 	SessionPtr fSessionPtr;
 
 	bool fDrawRequested;
-	long fDrawsPerSecond;
+	long fDrawTenths;
 	long fLastDrawTime;
 
 protected:

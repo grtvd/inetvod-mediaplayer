@@ -44,7 +44,6 @@ MainAppPtr& MainApp::getThe()
 /******************************************************************************/
 
 MainApp::MainApp() : fScreenCoord(-300, -240, 300, 240), fOrthoCoord(-1, 1, 1, -1)
-//MainApp::MainApp() : fScreenCoord(-300, -240, 300, 240), fOrthoCoord(-300, 240, 300, -240)
 {
 	fDoExit = false;
 
@@ -52,7 +51,7 @@ MainApp::MainApp() : fScreenCoord(-300, -240, 300, 240), fOrthoCoord(-1, 1, 1, -
 	fSessionPtr = Session::newInstance();
 
 	fDrawRequested = true;
-	fDrawsPerSecond = 10;
+	fDrawTenths = 5;
 	fLastDrawTime = 0;
 
 	SetDrawCoord(fScreenCoord, fOrthoCoord);
@@ -419,17 +418,11 @@ void MainApp::idle()
 			break;
 	}
 
-	//TTick currTime = tGetTickCount();
-	//TTick nextDrawTime = fLastDrawTime + (1000 / fDrawsPerSecond);
-
-	//if(currTime >= nextDrawTime)
-	//{
-	//	draw(true);
-	//	fLastDrawTime = currTime;
-	//}
-	//else
-	if(fDrawRequested)
-		draw(false);
+	if(fDrawRequested || tHaveTenthsPast(fLastDrawTime, fDrawTenths))
+	{
+		draw(true);
+		fLastDrawTime = tGetTickCount();
+	}
 }
 
 /******************************************************************************/
