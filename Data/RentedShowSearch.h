@@ -24,6 +24,7 @@ protected:
 	ProviderID fProviderID;
 	CStr128 fName;
 	CStr64 fEpisodeName;
+	CStrVar fPictureURL;
 
 	TDateTime fAvailableUntil;
 

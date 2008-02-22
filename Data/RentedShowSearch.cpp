@@ -30,6 +30,7 @@ void RentedShowSearch::readFromFiler(DataFilerPtr filerPtr)
 	fProviderID = ProviderID(filerPtr->readString().c_str());
 	fName.copy(filerPtr->readString().c_str());
 	fEpisodeName.copy(filerPtr->readString().c_str());
+	fPictureURL = filerPtr->readString();
 
 	fAvailableUntil = filerPtr->readDateTime();
 }
