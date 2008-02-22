@@ -23,6 +23,7 @@ protected:
 	CStr64 fEpisodeName;
 	TDate fReleasedOn;
 	TInt16 fReleasedYear;
+	CStrVar fPictureURL;
 	ShowProviderVector fShowProviderVector;
 
 protected:
