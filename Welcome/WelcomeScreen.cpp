@@ -143,7 +143,7 @@ void WelcomeScreen::onFocus(const ControlID& controlID)
 	else if(controlID == fSearchByNameID)
 		textControlPtr->setText("Use \"Search by Title\" to find shows by a partial show title.");
 	else if(controlID == fPreferencesID)
-		textControlPtr->setText("\"Preferences\" allows you to update your iNetVOD settings.");
+		textControlPtr->setText("\"Preferences\" allows you to update your Storm settings.");
 	else
 		textControlPtr->setText(NULL);
 }

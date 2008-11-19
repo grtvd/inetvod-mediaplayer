@@ -43,12 +43,12 @@ void AskSignedUpControl::createControls()
 
 	top = 20;
 	controlPtr = TextControl::newInstance(fWelecomeTextID, fScreenID, RectWH(10, top, fRect.getWidth() - 20, 84),
-		"Welcome to iNetVOD! iNetVOD is a service for accessing a vast array of Internet-based content, such as movies, TV shows, and radio programs.");
+		"Welcome to Storm Media Player! Storm is a service for accessing a vast array of Internet-based content, such as movies, TV shows, and radio programs.");
 	newControl(controlPtr);
 
 	top += controlPtr->getRect().getHeight() + 28;
 	controlPtr = TextControl::newInstance(fRegisteredTextID, fScreenID, RectWH(30, top, fRect.getWidth() - 40, 28),
-		"Are you already registered with iNetVOD?");
+		"Are you already registered with Storm?");
 	newControl(controlPtr);
 
 	top += controlPtr->getRect().getHeight() + 28;

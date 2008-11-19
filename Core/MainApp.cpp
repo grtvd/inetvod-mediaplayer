@@ -74,7 +74,7 @@ void MainApp::reset()
 bool MainApp::init()
 {
 	int argc = 1;
-	char* argv[] = { "iNetVOD Media Player" };
+	char* argv[] = { "Storm Media Player" };
 
 	return init(argc, argv);
 }
@@ -89,7 +89,7 @@ bool MainApp::init(int argc, char* argv[])
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(fScreenCoord.getWidth(), fScreenCoord.getHeight());
-	glutCreateWindow("iNetVOD Media Player");
+	glutCreateWindow("Storm Media Player");
 	//#if !defined(WIN32)
 	//glutFullScreen();
 	//#endif

@@ -35,7 +35,7 @@ MemoryStreamPtr HTTPRequestor::sendRequest(MemoryStreamPtr rqstPtr)
 	}
 
 	// add HTTP headers
-	//sendWriterPtr->writeLine("POST /inetvod/playerapi/xml HTTP/1.1");
+	//sendWriterPtr->writeLine("POST /webapi/playerapi/xml HTTP/1.1");
 	tempStr.copyVarg("POST %s HTTP/1.1", sessionPtr->getNetworkHostPath());
 	sendWriterPtr->writeLine(tempStr.c_str());
 	tempStr.copyVarg("Host: %s", sessionPtr->getNetworkHostName());

@@ -37,10 +37,10 @@ void StartScreen::createControls()
 
 	TextControlPtr textControlPtr = TextControl::newInstance(fTextID, fScreenID,
 		RectWH(10, 20, fContentWidth - 20, fContentHeight - 50),
-		"Welcome to the iNetVOD Media Player demo. This player is a reference "
-		"implementation of the iNetVOD user interface for TV-connected devices, "
-		"accessing the iNetVOD Service across the Internet using the "
-		"iNetVOD Player API. Navigation is performed using the keyboard to simulate "
+		"Welcome to the Storm Media Player demo. This player is a reference "
+		"implementation of the Storm user interface for TV-connected devices, "
+		"accessing the Storm service across the Internet using the "
+		"Open Video Platform Player API. Navigation is performed using the keyboard to simulate "
 		"remote control commands. The following commands are supported:\n\n"
 		"Arrow Keys - Navigate between the controls\n"
 		"Enter - Select the focused control\n"

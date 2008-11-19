@@ -317,13 +317,13 @@ void SetupScreen::onSerialNoPinButton()
 		}
 		else if(statusCode == sc_Success)
 		{
-			MessageScreen::newInstance(mp_OK, "You are already registered with iNetVOD.  You will now be prompted for a Memory Card to save your settings.");
+			MessageScreen::newInstance(mp_OK, "You are already registered with Storm.  You will now be prompted for a Memory Card to save your settings.");
 			saveSettingsToMemoryCard();
 			close();
 		}
 		else if(statusCode == sc_UserIDPasswordMismatch)
 		{
-			MessageScreen::newInstance(mp_OK, "This Serial Number has already been registered with iNetVOD but the PIN entered is incorrect.  Please try again.");
+			MessageScreen::newInstance(mp_OK, "This Serial Number has already been registered with Storm but the PIN entered is incorrect.  Please try again.");
 		}
 		else
 		{
@@ -377,7 +377,7 @@ void SetupScreen::onIncludeAdultButton(const ControlID& controlID)
 
 	if(statusCode == sc_UserIDInUse)
 	{
-		MessageScreen::newInstance(mp_OK, "This Serial Number has already been registered with iNetVOD.");
+		MessageScreen::newInstance(mp_OK, "This Serial Number has already been registered with Storm.");
 		close();
 		return;
 	}
@@ -389,7 +389,7 @@ void SetupScreen::onIncludeAdultButton(const ControlID& controlID)
 	}
 
 	// signon the user
-	MessageScreen::newInstance(mp_OK, "You have been successfully signed up to the iNetVOD service.  You will now be logged into the system and prompted for a Memory Card to save your settings.");
+	MessageScreen::newInstance(mp_OK, "You have been successfully signed up for Storm.  You will now be logged into the system and prompted for a Memory Card to save your settings.");
 
 	statusCode = sessionPtr->signon(fSetupDataPtr->getUserID(), fSetupDataPtr->getUserPassword(),
 		fSetupDataPtr->getRememberPassword());

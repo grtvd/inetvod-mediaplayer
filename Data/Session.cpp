@@ -17,9 +17,9 @@ Session::Session()
 {
 	fMemoryCardSlot = mc_Slot1;
 	fNetworkInit = false;
-	fNetworkHostName.copy("api.inetvod.com");
+	fNetworkHostName.copy("api.stormmediaplayer.com");
 	fNetworkHostPort = 80;
-	fNetworkHostPath.copy("/inetvod/playerapi/binary");
+	fNetworkHostPath.copy("/webapi/playerapi/binary");
 	memset(&fNetworkHost, 0, sizeof(fNetworkHost));
 	fHaveNetworkHost = false;
 	fCanPingServer = false;
@@ -271,7 +271,7 @@ bool Session::saveMemCardSettings(MemoryCardSlot memoryCardSlot)
 void Session::showRequestError(const char* message)
 {
 	if(!tStrHasLen(message))
-		MessageScreen::newInstance(mp_OK, "An error occurred trying to communicate with the iNetVOD servers. Please check you network connection and try again.");
+		MessageScreen::newInstance(mp_OK, "An error occurred trying to communicate with the Storm servers. Please try again.");
 	else
 		MessageScreen::newInstance(mp_OK, message);
 }

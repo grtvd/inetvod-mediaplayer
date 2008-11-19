@@ -58,13 +58,13 @@ bool NeedProviderControl::loadData(ObjectPtr objectPtr)
 	CStrVar tempStr;
 
 	textControlPtr = getControl(fMemberTextID);
-	tempStr.copy("Your iNetVOD membership information will be used to create a new FREE membership at ");
+	tempStr.copy("Your Storm membership information will be used to create a new FREE membership at ");
 	tempStr.concat(rentDataPtr->getProviderName());
 	tempStr.concat(".  Your credit card information, if on file, will not be sent to ");
 	tempStr.concat(rentDataPtr->getProviderName());
 	tempStr.concat(".\r\r");
 	tempStr.concat(rentDataPtr->getProviderName());
-	tempStr.concat(" may have various member subscription plans that may be of interest to you.  Please visit the iNetVOD web site at www.inetvod.com for more information.");
+	tempStr.concat(" may have various member subscription plans that may be of interest to you.  Please visit the their site for more information.");
 	textControlPtr->setText(tempStr.c_str());
 
 	return true;

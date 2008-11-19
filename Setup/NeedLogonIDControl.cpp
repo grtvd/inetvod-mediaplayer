@@ -41,7 +41,7 @@ void NeedLogonIDControl::createControls()
 
 	top = 20;
 	controlPtr = TextControl::newInstance(fRegisterTextID, fScreenID, RectWH(10, top, fRect.getWidth() - 20, 56),
-		"You may register for iNetVOD by visiting www.iNetVOD.com/register or by calling 1-800-999-9999.");
+		"You may register for Storm by visiting stormmediaplayer.com/register.");
 	newControl(controlPtr);
 
 	top += controlPtr->getRect().getHeight() + 28;

@@ -173,12 +173,12 @@ void Screen::drawFrame(bool /*hasFocus*/)
 		fContentLeft + fContentWidth, fContentTop + fContentHeight + fStatusHeight),
 		fIsFullScreen ? gScreenBackgroundTransColor : gScreenBackgroundSolidColor);
 
-	// draw iNetVOD
+	// draw Storm
 	if(fIsFullScreen)
 	{
 		DrawTextAligned(Rect(fContentLeft + 10, fContentTop - fBorderWidth - fTitleHeight + fBorderWidth,
 			fContentLeft + fContentWidth, fContentTop - fBorderWidth),
-			ha_Right, va_Middle, "iNetVOD", fontPtr);
+			ha_Right, va_Middle, "STORM", fontPtr);
 	}
 
 	// draw title
