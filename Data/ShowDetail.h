@@ -20,7 +20,7 @@ protected:
 	CStr64 fEpisodeName;
 	CStr32 fEpisodeNumber;
 
-	TDate fReleasedOn;
+	TDateTime fReleasedOn;
 	TInt16 fReleasedYear;
 	CStrVar fDescription;
 	TInt16 fRunningMins;

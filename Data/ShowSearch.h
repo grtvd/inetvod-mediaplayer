@@ -21,7 +21,7 @@ protected:
 	ShowID fShowID;
 	CStr128 fName;
 	CStr64 fEpisodeName;
-	TDate fReleasedOn;
+	TDateTime fReleasedOn;
 	TInt16 fReleasedYear;
 	CStrVar fPictureURL;
 	ShowProviderVector fShowProviderVector;

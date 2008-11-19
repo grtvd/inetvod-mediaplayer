@@ -23,7 +23,7 @@ protected:
 	CStr128 fEpisodeName;
 	CStr32 fEpisodeNumber;
 
-	TDate fReleasedOn;
+	TDateTime fReleasedOn;
 	TInt16 fReleasedYear;
 	CStrVar fDescription;
 	TInt16 fRunningMins;
@@ -61,7 +61,7 @@ public:
 	const char* getEpisodeName() const { return fEpisodeName.c_str(); }
 	const char* getEpisodeNumber() const { return fEpisodeNumber.c_str(); }
 
-	TDate getReleasedOn() const { return fReleasedOn; }
+	TDateTime getReleasedOn() const { return fReleasedOn; }
 	TInt16 getReleasedYear() const { return fReleasedYear; }
 	const char* getDescription() const { return fDescription.c_str(); }
 	TInt16 getRunningMins() const { return fRunningMins; }

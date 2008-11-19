@@ -27,7 +27,7 @@ void ShowSearch::readFromFiler(DataFilerPtr filerPtr)
 	fShowID = ShowID(filerPtr->readString().c_str());
 	fName.copy(filerPtr->readString().c_str());
 	fEpisodeName.copy(filerPtr->readString().c_str());
-	fReleasedOn = filerPtr->readDate();
+	fReleasedOn = filerPtr->readDateTime();
 	fReleasedYear = filerPtr->readShort();
 	fPictureURL = filerPtr->readString();
 

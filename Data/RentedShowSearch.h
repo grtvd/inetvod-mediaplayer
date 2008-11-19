@@ -24,8 +24,12 @@ protected:
 	ProviderID fProviderID;
 	CStr128 fName;
 	CStr64 fEpisodeName;
+
+	TDateTime fReleasedOn;
+	TInt16 fReleasedYear;
 	CStrVar fPictureURL;
 
+	TDateTime fRentedOn;
 	TDateTime fAvailableUntil;
 
 protected:

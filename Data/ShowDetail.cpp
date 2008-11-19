@@ -20,7 +20,7 @@ void ShowDetail::readFromFiler(DataFilerPtr filerPtr)
 	fEpisodeName.copy(filerPtr->readString().c_str());
 	fEpisodeNumber.copy(filerPtr->readString().c_str());
 
-	fReleasedOn = filerPtr->readDate();
+	fReleasedOn = filerPtr->readDateTime();
 	fReleasedYear = filerPtr->readShort();
 	fDescription = filerPtr->readString();
 	fRunningMins = filerPtr->readShort();

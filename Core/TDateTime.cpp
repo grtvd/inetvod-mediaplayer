@@ -226,6 +226,7 @@ CStr32 TDateTimeUtil::dateTimeToString(ulong tDate, ulong tTime, TDateTimeFormat
 
 				//formats with no time output
 			case dtf_MM_DD_YY:
+			case dtf_M_D_YYYY:
 			case dtf_MM_DD_YYYY:
 			case dtf_M_D:
 				break;
@@ -244,6 +245,7 @@ CStr32 TDateTimeUtil::dateTimeToString(ulong tDate, ulong tTime, TDateTimeFormat
 	{
 		//date only formats
 		case dtf_MM_DD_YY:
+		case dtf_M_D_YYYY:
 		case dtf_MM_DD_YYYY:
 		case dtf_M_D:
 			return strDate;
