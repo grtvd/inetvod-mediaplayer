@@ -46,7 +46,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Ws2_32.lib c:\projects\glut\glut32.lib C:\Projects\FreeType\lib\libfreetype.lib C:\Projects\FTGL\win32_vcpp\build\ftgl_static_MT_d.lib"
-				OutputFile="$(OutDir)/iNetVOD Media Player.exe"
+				OutputFile="$(OutDir)/Storm Media Player.exe"
 				LinkIncremental="2"
 				IgnoreDefaultLibraryNames="LIBCMTD"
 				GenerateDebugInformation="TRUE"
@@ -86,11 +86,16 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				InlineFunctionExpansion="1"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
+				Optimization="1"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				FavorSizeOrSpeed="2"
+				AdditionalIncludeDirectories="c:\projects\glut;c:\projects\FreeType\include;c:\projects\FreeType\include\freetype2;C:\projects\FTGL\include;core;controls;data;welcome;nowplaying;setup;search;request;rent;prefs"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;USE_GLUT;XUSE_GLUT_FONT;FTGL_LIBRARY_STATIC;"
 				StringPooling="TRUE"
 				RuntimeLibrary="4"
 				EnableFunctionLevelLinking="FALSE"
+				DefaultCharIsUnsigned="TRUE"
 				UsePrecompiledHeader="3"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile="$(OutDir)/MediaPlayer.pch"
@@ -99,14 +104,17 @@
 				ProgramDataBaseFileName="$(OutDir)/"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				DebugInformationFormat="0"
+				CompileAs="2"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="Ws2_32.lib c:\projects\glut\glut32.lib C:\Projects\FreeType\lib\libfreetype.lib C:\Projects\FTGL\win32_vcpp\build\ftgl_static_MT_d.lib"
 				OutputFile="$(OutDir)/iNetVOD Media Player.exe"
 				LinkIncremental="1"
-				GenerateDebugInformation="TRUE"
+				IgnoreDefaultLibraryNames="LIBCMTD"
+				GenerateDebugInformation="FALSE"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
