@@ -51,7 +51,7 @@ void WelcomeScreen::createControls()
 	newControl(buttonControlPtr);
 
 	buttonControlPtr = ButtonControl::newInstance(fFeaturedID, getScreenID(),
-		RectWH(30, 75, 300, 38), "Featured");
+		RectWH(30, 75, 300, 38), "New Releases");
 	buttonControlPtr->setHorzAlign(ha_Left);
 	newControl(buttonControlPtr);
 
@@ -137,7 +137,7 @@ void WelcomeScreen::onFocus(const ControlID& controlID)
 	if(controlID == fNowPlayingID)
 		textControlPtr->setText("\"Now Playing\" lists the shows that you have previously rented and have available for viewing.");
 	else if(controlID == fFeaturedID)
-		textControlPtr->setText("\"Featured\" lists shows that are currently featured.");
+		textControlPtr->setText("\"New Releases\" lists the most recently released shows.");
 	else if(controlID == fSearchByCategoryID)
 		textControlPtr->setText("Use \"Search by Category\" to find shows by a specific category.");
 	else if(controlID == fSearchByNameID)
